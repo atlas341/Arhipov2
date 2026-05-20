@@ -855,15 +855,8 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   stroke-width: 2.6;
   opacity: 1;
   filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 2px currentColor);
-  animation: pulse-run var(--dur, 3s) linear infinite;
-  animation-delay: var(--delay, 0s);
 }
 @keyframes route-in { to { opacity: .9; } }
-/* Импульс стартует за пределами видимой части пути и пробегает её насквозь */
-@keyframes pulse-run {
-  from { stroke-dashoffset: var(--len, 0); }
-  to   { stroke-dashoffset: calc(var(--len, 0) * -1); }
-}
 
 /* Цвета по видам транспорта (рельса — тусклая, импульс — яркий) */
 .map__svg-wrap svg .map-rail--sea   { stroke: #E86A4A; opacity: 0; }
