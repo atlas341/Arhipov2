@@ -775,7 +775,7 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 }
 
 /* Russia outline */
-.map__svg-wrap svg path {
+.map__svg-wrap svg path:not(.map-rail):not(.map-pulse) {
   fill: #3A271E;
   stroke: #4E3528;
   stroke-width: 0.4px;
@@ -841,19 +841,20 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 }
 
 /* Маршрут = тусклая «рельса» снизу + яркий импульс, бегущий поверх неё */
-.map-rail {
+.map__svg-wrap svg .map-rail {
   fill: none;
+  stroke: #4E3528;
   stroke-linecap: round;
   stroke-width: 1;
   opacity: 0;
   animation: route-in .6s var(--ease) forwards;
 }
-.map-pulse {
+.map__svg-wrap svg .map-pulse {
   fill: none;
   stroke-linecap: round;
-  stroke-width: 2.2;
-  opacity: .95;
-  filter: drop-shadow(0 0 4px currentColor);
+  stroke-width: 2.6;
+  opacity: 1;
+  filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 2px currentColor);
   animation: pulse-run var(--dur, 3s) linear infinite;
   animation-delay: var(--delay, 0s);
 }
@@ -865,17 +866,20 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 }
 
 /* Цвета по видам транспорта (рельса — тусклая, импульс — яркий) */
-.map-rail--sea   { stroke: #E86A4A; opacity: 0; }
-.map-rail--rail  { stroke: #F2A341; opacity: 0; }
-.map-rail--air   { stroke: #FFD9A0; opacity: 0; }
-.map-rail--road  { stroke: #F4C98A; opacity: 0; }
-.map-rail--sea, .map-rail--rail, .map-rail--air, .map-rail--road { animation: rail-in .6s var(--ease) forwards; }
-@keyframes rail-in { to { opacity: .22; } }
+.map__svg-wrap svg .map-rail--sea   { stroke: #E86A4A; opacity: 0; }
+.map__svg-wrap svg .map-rail--rail  { stroke: #F2A341; opacity: 0; }
+.map__svg-wrap svg .map-rail--air   { stroke: #FFD9A0; opacity: 0; }
+.map__svg-wrap svg .map-rail--road  { stroke: #F4C98A; opacity: 0; }
+.map__svg-wrap svg .map-rail--sea,
+.map__svg-wrap svg .map-rail--rail,
+.map__svg-wrap svg .map-rail--air,
+.map__svg-wrap svg .map-rail--road { animation: rail-in .6s var(--ease) forwards; }
+@keyframes rail-in { to { opacity: .35; } }
 
-.map-pulse--sea  { stroke: #FF8A63; color: #FF8A63; }
-.map-pulse--rail { stroke: #FFB860; color: #FFB860; }
-.map-pulse--air  { stroke: #FFE8C2; color: #FFE8C2; }
-.map-pulse--road { stroke: #FFDDA8; color: #FFDDA8; }
+.map__svg-wrap svg .map-pulse--sea  { stroke: #FF8A63; color: #FF8A63; }
+.map__svg-wrap svg .map-pulse--rail { stroke: #FFB860; color: #FFB860; }
+.map__svg-wrap svg .map-pulse--air  { stroke: #FFE8C2; color: #FFE8C2; }
+.map__svg-wrap svg .map-pulse--road { stroke: #FFDDA8; color: #FFDDA8; }
 
 .map__panel {
   background: rgba(255,255,255,.03);
@@ -1973,9 +1977,9 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker__track, .marquee__track, .marker-pulse, .map-pulse { animation: none !important; }
-  .map-pulse { opacity: 0; }
-  .map-rail { opacity: .5 !important; stroke-width: 1.4; }
+  .ticker__track, .marquee__track, .marker-pulse, .map__svg-wrap svg .map-pulse { animation: none !important; }
+  .map__svg-wrap svg .map-pulse { opacity: 0; }
+  .map__svg-wrap svg .map-rail { opacity: .5 !important; stroke-width: 1.4; }
   [data-reveal] { opacity: 1; transform: none; }
 }
 
