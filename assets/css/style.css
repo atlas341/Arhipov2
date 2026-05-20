@@ -697,6 +697,9 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 }
 
 .map { max-width: var(--container); margin: 0 auto; }
+@media (min-width: 1280px) {
+  .map { max-width: min(1640px, 94vw); }
+}
 
 .map__controls {
   display: flex;
@@ -747,6 +750,13 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   border: 1px solid var(--line-dark);
   border-radius: var(--radius);
   padding: 24px;
+}
+@media (min-width: 1280px) {
+  .map__stage {
+    grid-template-columns: 1fr 360px;
+    gap: 32px;
+    padding: 28px;
+  }
 }
 
 .map__svg-wrap {
@@ -830,21 +840,42 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   100% { opacity: 0;   transform: scale(3.2); }
 }
 
-.map-route {
+/* Маршрут = тусклая «рельса» снизу + яркий импульс, бегущий поверх неё */
+.map-rail {
   fill: none;
   stroke-linecap: round;
-  stroke-dasharray: 3 3.5;
-  stroke-width: 1.4;
+  stroke-width: 1;
   opacity: 0;
-  animation: route-in .6s var(--ease) forwards, route-dash 12s linear infinite;
-  filter: drop-shadow(0 0 4px currentColor);
+  animation: route-in .6s var(--ease) forwards;
 }
-.map-route--sea  { stroke: #E86A4A; color: #E86A4A; }
-.map-route--rail { stroke: #F2A341; color: #F2A341; }
-.map-route--air  { stroke: #FFD9A0; color: #FFD9A0; stroke-dasharray: 1.5 5; }
-.map-route--road { stroke: #F4C98A; color: #F4C98A; stroke-dasharray: 2 3; stroke-width: 1; opacity: 0; }
-@keyframes route-in { to { opacity: .95; } }
-@keyframes route-dash { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -60; } }
+.map-pulse {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 2.2;
+  opacity: .95;
+  filter: drop-shadow(0 0 4px currentColor);
+  animation: pulse-run var(--dur, 3s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes route-in { to { opacity: .9; } }
+/* Импульс стартует за пределами видимой части пути и пробегает её насквозь */
+@keyframes pulse-run {
+  from { stroke-dashoffset: var(--len, 0); }
+  to   { stroke-dashoffset: calc(var(--len, 0) * -1); }
+}
+
+/* Цвета по видам транспорта (рельса — тусклая, импульс — яркий) */
+.map-rail--sea   { stroke: #E86A4A; opacity: 0; }
+.map-rail--rail  { stroke: #F2A341; opacity: 0; }
+.map-rail--air   { stroke: #FFD9A0; opacity: 0; }
+.map-rail--road  { stroke: #F4C98A; opacity: 0; }
+.map-rail--sea, .map-rail--rail, .map-rail--air, .map-rail--road { animation: rail-in .6s var(--ease) forwards; }
+@keyframes rail-in { to { opacity: .22; } }
+
+.map-pulse--sea  { stroke: #FF8A63; color: #FF8A63; }
+.map-pulse--rail { stroke: #FFB860; color: #FFB860; }
+.map-pulse--air  { stroke: #FFE8C2; color: #FFE8C2; }
+.map-pulse--road { stroke: #FFDDA8; color: #FFDDA8; }
 
 .map__panel {
   background: rgba(255,255,255,.03);
@@ -1942,7 +1973,9 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ticker__track, .marquee__track, .marker-pulse, .map-route { animation: none !important; }
+  .ticker__track, .marquee__track, .marker-pulse, .map-pulse { animation: none !important; }
+  .map-pulse { opacity: 0; }
+  .map-rail { opacity: .5 !important; stroke-width: 1.4; }
   [data-reveal] { opacity: 1; transform: none; }
 }
 
