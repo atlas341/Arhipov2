@@ -11,6 +11,8 @@
 
   const SVG_URL = 'assets/svg/russia.svg';
   const SVG_NS = 'http://www.w3.org/2000/svg';
+  const prefersReducedMotion =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let svgRoot = null;
   let branches = [];
@@ -225,12 +227,26 @@
         // Видимый штрих ~18% длины (но не длиннее 26px), остальное — пробег
         const seg = Math.max(10, Math.min(26, len * 0.18));
         pulse.style.strokeDasharray = seg + ' ' + len;
-        pulse.style.setProperty('--len', (len + seg).toFixed(1));
-        // Скорость зависит от длины: дальше — дольше летит (2.2–5.5 c)
-        const dur = Math.max(2.2, Math.min(5.5, len / 90));
-        pulse.style.setProperty('--dur', dur.toFixed(2) + 's');
-        // Случайная задержка старта, чтобы импульсы не моргали синхронно
-        pulse.style.setProperty('--delay', (-Math.random() * dur).toFixed(2) + 's');
+
+        // Уважаем «уменьшить движение»: тогда импульс просто не бежит
+        if (prefersReducedMotion) {
+          pulse.style.strokeDashoffset = 0;
+          return;
+        }
+
+        // Движение через Web Animations API — надёжнее CSS var() в @keyframes.
+        // За один период штрих проходит всю длину пути + свою длину (бесшовно).
+        const period = len + seg;
+        const dur = Math.max(2200, Math.min(5500, len * 11)); // мс: дальше — дольше
+        const anim = pulse.animate(
+          [
+            { strokeDashoffset: period },
+            { strokeDashoffset: -seg },
+          ],
+          { duration: dur, iterations: Infinity, easing: 'linear' }
+        );
+        // Случайный сдвиг фазы, чтобы импульсы не летели синхронно
+        anim.currentTime = Math.random() * dur;
       });
     });
   }
