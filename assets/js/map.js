@@ -200,18 +200,37 @@
         const a = locationById(fromId);
         const b = locationById(toId);
         if (!a || !b) return;
-        const path = document.createElementNS(SVG_NS, 'path');
-        path.setAttribute('class', 'map-route map-route--' + m);
-        // Curve: control point above the midpoint
+
+        // Кривая: контрольная точка выше середины
         const mx = (a.x + b.x) / 2;
         const my = (a.y + b.y) / 2;
         const dist = Math.hypot(b.x - a.x, b.y - a.y);
         const lift = Math.min(60, dist * 0.18);
-        const cx = mx;
-        const cy = my - lift;
-        const d = `M ${a.x} ${a.y} Q ${cx} ${cy} ${b.x} ${b.y}`;
-        path.setAttribute('d', d);
-        routesLayer.appendChild(path);
+        const d = `M ${a.x} ${a.y} Q ${mx} ${my - lift} ${b.x} ${b.y}`;
+
+        // 1) Тусклая «рельса» — показывает сам маршрут
+        const rail = document.createElementNS(SVG_NS, 'path');
+        rail.setAttribute('class', 'map-rail map-rail--' + m);
+        rail.setAttribute('d', d);
+        routesLayer.appendChild(rail);
+
+        // 2) Яркий импульс, бегущий по тому же пути
+        const pulse = document.createElementNS(SVG_NS, 'path');
+        pulse.setAttribute('class', 'map-pulse map-pulse--' + m);
+        pulse.setAttribute('d', d);
+        routesLayer.appendChild(pulse);
+
+        // Длину пути можно взять только после вставки в DOM
+        const len = pulse.getTotalLength();
+        // Видимый штрих ~18% длины (но не длиннее 26px), остальное — пробег
+        const seg = Math.max(10, Math.min(26, len * 0.18));
+        pulse.style.strokeDasharray = seg + ' ' + len;
+        pulse.style.setProperty('--len', (len + seg).toFixed(1));
+        // Скорость зависит от длины: дальше — дольше летит (2.2–5.5 c)
+        const dur = Math.max(2.2, Math.min(5.5, len / 90));
+        pulse.style.setProperty('--dur', dur.toFixed(2) + 's');
+        // Случайная задержка старта, чтобы импульсы не моргали синхронно
+        pulse.style.setProperty('--delay', (-Math.random() * dur).toFixed(2) + 's');
       });
     });
   }
@@ -231,7 +250,7 @@
 
   function showDestinationInPanel(dest) {
     panel.innerHTML = `
-      <span class="branch-card__type" style="background:rgba(79,183,255,.14);color:#4FB7FF;border-color:rgba(79,183,255,.3);">Точка доставки</span>
+      <span class="branch-card__type" style="background:rgba(217,84,43,.16);color:#E8895A;border-color:rgba(217,84,43,.35);">Точка доставки</span>
       <h3 class="branch-card__city">${escapeHtml(dest.city)}</h3>
       <p class="branch-card__region">${escapeHtml(dest.note || '')}</p>
       <p class="branch-card__desc">Регулярные поставки продуктов питания. Доставка морем во&nbsp;время навигации, авиа — круглогодично.</p>
