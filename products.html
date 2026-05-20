@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B1B2B" />
+  <meta name="description" content="Продукция Торгового дома Архипов М.А. — мясо, рыба, сыры, колбасы, заморозка, бакалея, консервация. Прямые контракты с производителями." />
+  <title>Продукция — Торговый дом Архипов М.А.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="siteHeader">
+    <a href="index.html" class="logo" aria-label="Торговый дом Архипов М.А.">
+      <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".4" />
+        <path d="M20 4 L33 32 L20 26 L7 32 Z" fill="currentColor" />
+      </svg>
+      <span>
+        <strong>ТД Архипов М.А.</strong>
+        <em>Поставки еды по всей России</em>
+      </span>
+    </a>
+    <nav class="site-header__nav">
+      <a href="index.html#why">Почему мы</a>
+      <a href="index.html#map">География</a>
+      <a href="products.html">Продукция</a>
+      <a href="index.html#team">Команда</a>
+      <a href="index.html#news">Новости</a>
+      <a href="index.html#contact">Контакты</a>
+    </nav>
+    <a href="index.html#contact" class="btn btn--solid header-cta">Запросить КП</a>
+    <button class="site-header__burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="ph">
+    <div class="ph__grid" aria-hidden="true"></div>
+    <div class="ph__inner">
+      <p class="ph__eyebrow">Каталог · 10 направлений</p>
+      <h1 class="ph__title">
+        Что мы&nbsp;<em>возим</em>.
+      </h1>
+      <p class="ph__lede">
+        От&nbsp;замороженной говядины и&nbsp;колбасных изделий до&nbsp;бакалеи, напитков и&nbsp;хозтоваров.
+        Прямые контракты с&nbsp;60+&nbsp;производителями — без&nbsp;посредников и&nbsp;надбавок третьих рук.
+      </p>
+      <div class="ph__jump">
+        <a href="#frozen">Заморозка</a>
+        <a href="#meat">Мясо</a>
+        <a href="#fish">Рыба и&nbsp;пресервы</a>
+        <a href="#cheese">Молочка и&nbsp;сыры</a>
+        <a href="#sausage">Колбасы</a>
+        <a href="#oils">Масложировая</a>
+        <a href="#canned">Консервация</a>
+        <a href="#grocery">Бакалея</a>
+        <a href="#veg">Ягодно-овощная</a>
+        <a href="#nonfood">Non&nbsp;food</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 — FROZEN -->
+  <section class="pcat" id="frozen">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">01</span>
+          <span class="pcat__tag">Заморозка и полуфабрикаты</span>
+        </div>
+        <h2 class="pcat__title">Замороженное сырьё и&nbsp;<em>полуфабрикаты</em></h2>
+        <p class="pcat__desc">Готовые полуфабрикаты, пельмени, котлеты, тесто. Холодовая цепочка от&nbsp;завода до&nbsp;клиента — собственные рефрижераторы и&nbsp;склады −25&nbsp;°C.</p>
+      </header>
+      <div class="pcat__layout">
+        <div class="pcat__image">
+          <img src="https://vmmt.ru/assets/image-cache/uploads/files/321/photo-136.c56ed4f6.jpg" alt="Замороженные полуфабрикаты" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>−25&nbsp;°C</b>
+            <span>температурный режим</span>
+          </div>
+        </div>
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Бренды-партнёры</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip pcat-chip--strong">Морозко</span>
+            <span class="pcat-chip pcat-chip--strong">Мираторг</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Четверг»</span>
+          </div>
+          <div class="pcat__notes">
+            <div class="pcat__note">Поставки для общепита, розницы, ведомственных столовых</div>
+            <div class="pcat__note pcat__note--blue">Доставка морем, ЖД и автотранспортом</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 — MEAT -->
+  <section class="pcat pcat--alt" id="meat">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">02</span>
+          <span class="pcat__tag">Мясо и&nbsp;птица</span>
+        </div>
+        <h2 class="pcat__title">Говядина, свинина, <em>кура</em></h2>
+        <p class="pcat__desc">Полутуши, отруба, фарши, крупный кусок. Прямые контракты с&nbsp;крупнейшими российскими мясокомбинатами.</p>
+      </header>
+      <div class="pcat__layout pcat__layout--reverse">
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Бренды-партнёры</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip pcat-chip--strong">Черкизово</span>
+            <span class="pcat-chip pcat-chip--strong">БМК</span>
+            <span class="pcat-chip pcat-chip--strong">МК Заволжский</span>
+            <span class="pcat-chip pcat-chip--strong">МК Клинский</span>
+            <span class="pcat-chip pcat-chip--strong">Мираторг</span>
+          </div>
+          <div class="pcat__notes">
+            <div class="pcat__note">Промышленная и розничная фасовка</div>
+            <div class="pcat__note">Ветеринарные сертификаты на каждую партию</div>
+          </div>
+        </div>
+        <div class="pcat__image">
+          <img src="https://avatars.mds.yandex.net/i?id=e59c09f7f5b116baafd8991ad3af19b7af9b9f23-4353501-images-thumbs&n=13" alt="Мясо" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>5</b>
+            <span>контрактов с производителями</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — FISH & PRESERVES -->
+  <section class="pcat" id="fish">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">03</span>
+          <span class="pcat__tag">Рыба и&nbsp;пресервы</span>
+        </div>
+        <h2 class="pcat__title">Рыба, морепродукты, <em>пресервы</em></h2>
+        <p class="pcat__desc">Замороженная, охлаждённая, переработанная. Сельдь, скумбрия, сёмга, форель — в&nbsp;маслах, соусах, винных и&nbsp;пряных заливках.</p>
+      </header>
+      <div class="pcat__layout">
+        <div class="pcat__image">
+          <img src="https://avatars.mds.yandex.net/i?id=a113e2604887cb5f3826877cf9dfece2_l-5886707-images-thumbs&n=13" alt="Рыба и пресервы" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>8</b>
+            <span>брендов в линейке</span>
+          </div>
+        </div>
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Бренды-партнёры</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip pcat-chip--strong">Санта Бремор</span>
+            <span class="pcat-chip pcat-chip--strong">VICI</span>
+            <span class="pcat-chip pcat-chip--strong">Балтийский Берег</span>
+            <span class="pcat-chip pcat-chip--strong">Фрегат</span>
+            <span class="pcat-chip pcat-chip--strong">Викинг</span>
+            <span class="pcat-chip pcat-chip--strong">Фосфорель</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Океан»</span>
+            <span class="pcat-chip pcat-chip--strong">KUZUOGLU</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — DAIRY & CHEESE -->
+  <section class="pcat pcat--alt" id="cheese">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">04</span>
+          <span class="pcat__tag">Молочка и&nbsp;сыры</span>
+        </div>
+        <h2 class="pcat__title">Сыры, молочная <em>группа</em></h2>
+        <p class="pcat__desc">Полутвёрдые, плавленые, рассольные сыры, фасованные и&nbsp;весовые. Российские и&nbsp;белорусские заводы — прямые контракты.</p>
+      </header>
+      <div class="pcat__layout pcat__layout--reverse">
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Бренды-партнёры</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip pcat-chip--strong">Савушкин Продукт</span>
+            <span class="pcat-chip pcat-chip--strong">Хохланд</span>
+            <span class="pcat-chip pcat-chip--strong">Брест-Литовск</span>
+            <span class="pcat-chip pcat-chip--strong">Бобровский сырзавод</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Стародуб»</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Белослава»</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Мирослава»</span>
+            <span class="pcat-chip pcat-chip--strong">Foodland</span>
+            <span class="pcat-chip pcat-chip--strong">Моловита</span>
+            <span class="pcat-chip pcat-chip--strong">Сыробогатов</span>
+          </div>
+        </div>
+        <div class="pcat__image">
+          <img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?w=900&h=1100&fit=crop&q=80" alt="Сыры" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>10+</b>
+            <span>сырных брендов</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — SAUSAGE -->
+  <section class="pcat" id="sausage">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">05</span>
+          <span class="pcat__tag">Колбасные изделия</span>
+        </div>
+        <h2 class="pcat__title">Колбасы, ветчина, <em>сосиски</em></h2>
+        <p class="pcat__desc">Варёные, варёно-копчёные, сырокопчёные, сосиски, сардельки, ветчина. 10&nbsp;контрактов с&nbsp;крупнейшими российскими производителями.</p>
+      </header>
+      <div class="pcat__layout">
+        <div class="pcat__image">
+          <img src="https://avatars.mds.yandex.net/get-altay/16368192/2a0000019a59f86b259211d2dc71ac124668/XXL_height" alt="Колбасные изделия" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>10</b>
+            <span>прямых контрактов</span>
+          </div>
+        </div>
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Бренды-партнёры</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip pcat-chip--strong">Анком</span>
+            <span class="pcat-chip pcat-chip--strong">Иней</span>
+            <span class="pcat-chip pcat-chip--strong">Черкизово</span>
+            <span class="pcat-chip pcat-chip--strong">БМК</span>
+            <span class="pcat-chip pcat-chip--strong">МК Заволжский</span>
+            <span class="pcat-chip pcat-chip--strong">МК Клинский</span>
+            <span class="pcat-chip pcat-chip--strong">МПЗ «Окраина»</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Стародворье»</span>
+            <span class="pcat-chip pcat-chip--strong">МПК «Останкино»</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Гродно»</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — OILS / MAYO -->
+  <section class="pcat pcat--alt" id="oils">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">06</span>
+          <span class="pcat__tag">Масложировая группа</span>
+        </div>
+        <h2 class="pcat__title">Майонезы, соусы, <em>масла</em></h2>
+        <p class="pcat__desc">Заправки, фасованные масла. Промышленная и&nbsp;розничная фасовка под&nbsp;общепит, сети и&nbsp;госструктуры.</p>
+      </header>
+      <div class="pcat__layout pcat__layout--reverse">
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Бренды-партнёры</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip pcat-chip--strong">РусАгро</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Махеев»</span>
+            <span class="pcat-chip pcat-chip--strong">EFKO Food</span>
+            <span class="pcat-chip pcat-chip--strong">Ильинское-95</span>
+            <span class="pcat-chip pcat-chip--strong">Pechagin</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Царский»</span>
+            <span class="pcat-chip pcat-chip--strong">SolPro</span>
+            <span class="pcat-chip pcat-chip--strong">Брест-Литовск</span>
+            <span class="pcat-chip pcat-chip--strong">Aura</span>
+          </div>
+        </div>
+        <div class="pcat__image">
+          <img src="https://avatars.mds.yandex.net/i?id=04b02fd55f3540a3f799b440b654fdf6_l-4080966-images-thumbs&n=13" alt="Масложировая группа" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>9</b>
+            <span>брендов в линейке</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — CANNED -->
+  <section class="pcat" id="canned">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">07</span>
+          <span class="pcat__tag">Консервация</span>
+        </div>
+        <h2 class="pcat__title">Овощные, мясные, <em>томатные</em></h2>
+        <p class="pcat__desc">Консервы, маринады, варенья, томатная группа. Стекло и&nbsp;жесть, фасовка под&nbsp;розницу и&nbsp;HoReCa.</p>
+      </header>
+      <div class="pcat__layout">
+        <div class="pcat__image">
+          <img src="https://avatars.mds.yandex.net/get-mpic/12301908/2a00000194c77c0a688d4925ae94f0f10e47/orig" alt="Консервация" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>8</b>
+            <span>контрактов с производителями</span>
+          </div>
+        </div>
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Бренды-партнёры</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip pcat-chip--strong">SunFeel</span>
+            <span class="pcat-chip pcat-chip--strong">«Баба Маня»</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Фрау Марта»</span>
+            <span class="pcat-chip pcat-chip--strong">«Сохраним традиции»</span>
+            <span class="pcat-chip pcat-chip--strong">Maysun</span>
+            <span class="pcat-chip pcat-chip--strong">«6 соток»</span>
+            <span class="pcat-chip pcat-chip--strong">Помидорка</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Дядя Ваня»</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 — GROCERY -->
+  <section class="pcat pcat--alt" id="grocery">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">08</span>
+          <span class="pcat__tag">Бакалея и&nbsp;напитки</span>
+        </div>
+        <h2 class="pcat__title">Крупы, сахар, чай, <em>вода</em></h2>
+        <p class="pcat__desc">Макароны, соль, кофе, питьевая и&nbsp;минеральная вода, безалкогольные напитки. Полная корзина для&nbsp;магазина и&nbsp;столовой.</p>
+      </header>
+      <div class="pcat__layout pcat__layout--reverse">
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Бренды-партнёры</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip pcat-chip--strong">Боржоми</span>
+            <span class="pcat-chip pcat-chip--strong">Святой Источник</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Колобок»</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Сладояр»</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Каролина»</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Снежская»</span>
+            <span class="pcat-chip pcat-chip--strong">ТМ «Дымка»</span>
+            <span class="pcat-chip">и другие</span>
+          </div>
+        </div>
+        <div class="pcat__image">
+          <img src="https://avatars.mds.yandex.net/i?id=a964cfb9458dafa02e7dae033dd3934f_l-10100414-images-thumbs&n=13" alt="Бакалея" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>7+</b>
+            <span>основных брендов</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 — VEG/BERRY -->
+  <section class="pcat" id="veg">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">09</span>
+          <span class="pcat__tag">Ягодно-овощная</span>
+        </div>
+        <h2 class="pcat__title">Овощи, ягоды, <em>заморозка</em></h2>
+        <p class="pcat__desc">Заморозка, свежие овощи и&nbsp;ягоды от&nbsp;южных и&nbsp;северо-западных поставщиков. Сезонные и&nbsp;круглогодичные позиции.</p>
+      </header>
+      <div class="pcat__layout">
+        <div class="pcat__image">
+          <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=900&h=1100&fit=crop&q=80" alt="Ягоды и овощи" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>Сезон</b>
+            <span>круглый год</span>
+          </div>
+        </div>
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Особенности</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip">Шоковая заморозка</span>
+            <span class="pcat-chip">Овощные смеси</span>
+            <span class="pcat-chip">Сезонные ягоды</span>
+            <span class="pcat-chip">Юг России</span>
+            <span class="pcat-chip">Северо-Запад</span>
+          </div>
+          <div class="pcat__notes">
+            <div class="pcat__note">Хранение −25&nbsp;°C, собственные холодильные склады</div>
+            <div class="pcat__note pcat__note--blue">Поставки морем и&nbsp;ЖД в&nbsp;северные регионы</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 — NON-FOOD -->
+  <section class="pcat pcat--alt" id="nonfood">
+    <div class="pcat__inner">
+      <header class="pcat__head">
+        <div class="pcat__meta">
+          <span class="pcat__num">10</span>
+          <span class="pcat__tag">Non&nbsp;food + контейнеры</span>
+        </div>
+        <h2 class="pcat__title">Хозтовары, контейнеры, <em>оборудование</em></h2>
+        <p class="pcat__desc">Поставка хозтоваров для&nbsp;торговых точек. Отдельное направление — поставка и&nbsp;ремонт рефрижераторных и&nbsp;сухогрузных контейнеров.</p>
+      </header>
+      <div class="pcat__layout pcat__layout--reverse">
+        <div class="pcat__brands">
+          <p class="pcat__brands-label">Направления</p>
+          <div class="pcat__chips">
+            <span class="pcat-chip">Бытовая химия</span>
+            <span class="pcat-chip">Посуда и расходники</span>
+            <span class="pcat-chip">Упаковка</span>
+            <span class="pcat-chip">Рефконтейнеры</span>
+            <span class="pcat-chip">Сухогрузные контейнеры</span>
+            <span class="pcat-chip">Ремонт оборудования</span>
+          </div>
+          <div class="pcat__notes">
+            <div class="pcat__note">Сопутствующее снабжение для магазинов и столовых</div>
+            <div class="pcat__note pcat__note--blue">Сервисная база по контейнерам в Северодвинске</div>
+          </div>
+        </div>
+        <div class="pcat__image">
+          <img src="https://images.unsplash.com/photo-1605745341112-85968b19335b?w=900&h=1100&fit=crop&q=80" alt="Контейнеры и хозтовары" loading="lazy" />
+          <div class="pcat__image-meta">
+            <b>Сервис</b>
+            <span>поставка + ремонт</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="pcta">
+    <div class="pcta__inner">
+      <div>
+        <h2 class="pcta__title">Нужен прайс или <em>персональное предложение</em>?</h2>
+        <p class="pcta__lede">Высылаем актуальный прайс-лист и&nbsp;обсуждаем условия по&nbsp;объёму, региону и&nbsp;форме оплаты. Для&nbsp;госструктур работаем по&nbsp;44-ФЗ и&nbsp;223-ФЗ.</p>
+      </div>
+      <div class="pcta__actions">
+        <a href="tel:+78124500094" class="btn btn--solid btn--lg">+7 (812) 450-00-94</a>
+        <a href="index.html#contact" class="btn btn--ghost btn--lg">Оставить заявку</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <a href="index.html" class="logo logo--footer">
+          <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".4" />
+            <path d="M20 4 L33 32 L20 26 L7 32 Z" fill="currentColor" />
+          </svg>
+          <span><strong>ТД Архипов М.А.</strong><em>Северодвинск · Архангельск · СПб · ещё&nbsp;10 точек</em></span>
+        </a>
+        <p class="site-footer__about">
+          ИП Архипов М.А. Один из&nbsp;крупнейших поставщиков продуктов питания
+          на&nbsp;Севере России и&nbsp;по&nbsp;Северному морскому пути.
+        </p>
+      </div>
+
+      <div>
+        <h4>Навигация</h4>
+        <a href="index.html#map">География</a>
+        <a href="index.html#numbers">Цифры</a>
+        <a href="products.html">Продукция</a>
+        <a href="index.html#partners">Партнёры</a>
+        <a href="index.html#news">Новости</a>
+        <a href="index.html#contact">Контакты</a>
+      </div>
+
+      <div>
+        <h4>Контакты</h4>
+        <a href="tel:+78124500094">+7 (812) 450-00-94</a>
+        <a href="tel:+79116769640">+7 (911) 676-96-40</a>
+        <a href="mailto:info@arkhipov-td.ru">info@arkhipov-td.ru</a>
+        <a href="https://vk.com/arkhipov_m_a" target="_blank" rel="noopener">vk.com/arkhipov_m_a</a>
+      </div>
+
+      <div>
+        <h4>Документы</h4>
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Реквизиты ИП</a>
+        <a href="#">Договор-оферта</a>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© 2026 ИП Архипов М.А. Все права защищены.</span>
+      <span>Сделано без шаблонов.</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "modes": {
+    "sea": {
+      "label": "Морем",
+      "icon": "wave",
+      "color": "#4FB7FF",
+      "routes": [
+        ["spb", "kaliningrad"],
+        ["murmansk", "sabetta"],
+        ["murmansk", "dudinka"],
+        ["arhangelsk", "sabetta"],
+        ["novorossiysk", "spb"],
+        ["vladivostok", "anadyr"],
+        ["vladivostok", "pevek"]
+      ]
+    },
+    "rail": {
+      "label": "ЖД",
+      "icon": "rail",
+      "color": "#F2A341",
+      "routes": [
+        ["severodvinsk", "arhangelsk"],
+        ["arhangelsk", "kotlas"],
+        ["kotlas", "vorkuta"],
+        ["spb", "arhangelsk"],
+        ["spb", "kaliningrad"],
+        ["arhangelsk", "rostov"],
+        ["rostov", "vladivostok"]
+      ]
+    },
+    "air": {
+      "label": "Авиа",
+      "icon": "plane",
+      "color": "#9EE493",
+      "routes": [
+        ["arhangelsk", "anadyr"],
+        ["arhangelsk", "norilsk"],
+        ["arhangelsk", "novyy-urengoy"],
+        ["arhangelsk", "sabetta"],
+        ["arhangelsk", "utrenniy"],
+        ["vladivostok", "anadyr"]
+      ]
+    },
+    "road": {
+      "label": "Автотранспортом",
+      "icon": "truck",
+      "color": "#E6E0D4",
+      "routes": [
+        ["severodvinsk", "arhangelsk"],
+        ["arhangelsk", "kotlas"],
+        ["spb", "arhangelsk"],
+        ["spb", "kaliningrad"],
+        ["rostov", "novorossiysk"],
+        ["rostov", "spb"],
+        ["arhangelsk", "vorkuta"]
+      ]
+    }
+  }
+}

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B1B2B" />
+  <meta name="description" content="Торговый дом Архипов М.А. — поставки продуктов питания по всей России, включая Арктику, Крайний Север и удалённые регионы. 13 филиалов, 4 млрд ₽ оборот, 2000+ торговых точек." />
+  <title>Торговый дом Архипов М.А. — поставки продуктов питания по всей России</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <!-- ===================== PRELOADER ===================== -->
+  <div id="preloader" class="preloader" aria-hidden="false">
+    <div class="preloader__bg"></div>
+    <div class="preloader__content">
+      <div class="preloader__brand">
+        <span class="preloader__brand-mark">ТД</span>
+        <span class="preloader__brand-text">Архипов&nbsp;М.А.</span>
+      </div>
+      <ul class="preloader__words" aria-hidden="true">
+        <li class="preloader__word">Надёжность</li>
+        <li class="preloader__word">Качество</li>
+        <li class="preloader__word">Север</li>
+      </ul>
+      <div class="preloader__progress" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="siteHeader">
+    <a href="#" class="logo" aria-label="Торговый дом Архипов М.А.">
+      <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".4" />
+        <path d="M20 4 L33 32 L20 26 L7 32 Z" fill="currentColor" />
+      </svg>
+      <span>
+        <strong>ТД Архипов М.А.</strong>
+        <em>Поставки еды по всей России</em>
+      </span>
+    </a>
+       <nav class="site-header__nav">
+      <a href="#why">Почему мы</a>
+      <a href="#map">География</a>
+      <a href="products.html">Продукция</a>
+      <a href="#team">Команда</a>
+      <a href="#news">Новости</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <a href="#contact" class="btn btn--solid header-cta">Запросить КП</a>
+    <button class="site-header__burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__noise" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <p class="hero__eyebrow">с 2008 года</p>
+      <h1 class="hero__title">
+        <span class="hero__title-line">Кормим страну там,</span>
+        <span class="hero__title-line">где её сложнее всего</span>
+        <span class="hero__title-line hero__title-line--accent">достичь.</span>
+      </h1>
+      <p class="hero__lede">
+        Поставки продуктов питания в порты, на суда и в Арктику — с 13 складов
+        от&nbsp;Калининграда до&nbsp;Анадыря. Морем, железной&nbsp;дорогой, авиа&nbsp;и&nbsp;автотранспортом.
+      </p>
+
+      <div class="hero__cta-row">
+        <a href="#contact" class="btn btn--solid btn--lg">Запросить коммерческое предложение</a>
+        <a href="#map" class="btn btn--ghost btn--lg">Посмотреть географию</a>
+      </div>
+    </div>
+
+    <!-- Тикер фактов -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span class="ticker__item"><b>4&nbsp;млрд&nbsp;₽</b> годовой оборот</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>270+</b> сотрудников</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>2&nbsp;000</b> торговых точек в активной базе</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>13</b> филиалов от&nbsp;Калининграда до&nbsp;Анадыря</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>8&nbsp;500&nbsp;м²</b> складов</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>25</b> единиц техники</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>20</b> торговых представителей на&nbsp;местах</span>
+        <span class="ticker__sep">●</span>
+
+        <!-- дубль для бесшовной прокрутки -->
+        <span class="ticker__item"><b>4&nbsp;млрд&nbsp;₽</b> годовой оборот</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>270+</b> сотрудников</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>2&nbsp;000</b> торговых точек в активной базе</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>13</b> филиалов от&nbsp;Калининграда до&nbsp;Анадыря</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>8&nbsp;500&nbsp;м²</b> складов</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>25</b> единиц техники</span>
+        <span class="ticker__sep">●</span>
+        <span class="ticker__item"><b>20</b> торговых представителей на&nbsp;местах</span>
+        <span class="ticker__sep">●</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STORIES ===================== -->
+  <section class="stories" id="stories">
+    <header class="section-head">
+      <span class="section-head__num">01</span>
+      <h2 class="section-head__title">Для кого мы возим</h2>
+      <p class="section-head__lede">Три большие линии работы. В каждой — своя логистика, свой ассортимент и свои сроки.</p>
+    </header>
+
+    <div class="stories__grid">
+      <article class="story">
+        <div class="story__tag">Розница и&nbsp;сети</div>
+        <h3 class="story__title">Региональные и&nbsp;федеральные сети, опт, HoReCa</h3>
+        <p>Светофор, Доброцен, Лето, Меркурий, Макси, Петровский, Диал, Союз, Гарант. Поставки еженедельно, по&nbsp;утверждённой матрице, с&nbsp;собственного склада.</p>
+        <ul>
+          <li>Заморозка, мясо, рыба, сыры</li>
+          <li>Бакалея и&nbsp;консервация</li>
+          <li>Масложировая группа и&nbsp;молочка</li>
+        </ul>
+      </article>
+
+      <article class="story story--accent">
+        <div class="story__tag">Морские и&nbsp;речные суда</div>
+        <h3 class="story__title">Снабжение судов и&nbsp;экспедиций</h3>
+        <p>Комплектуем рейсы по&nbsp;контракту: продукты на&nbsp;весь срок плавания, упаковка с&nbsp;учётом холодильных мощностей судна, доставка на&nbsp;борт в&nbsp;порту захода.</p>
+        <ul>
+          <li>Архангельск, Мурманск, СПб, Новороссийск, Владивосток</li>
+          <li>Севморпуть: Сабетта, Дудинка, Певек</li>
+          <li>Полярные и&nbsp;арктические экспедиции</li>
+        </ul>
+      </article>
+
+      <article class="story">
+        <div class="story__tag">Госконтракты</div>
+        <h3 class="story__title">Государственные и&nbsp;муниципальные учреждения</h3>
+        <p>Работаем по&nbsp;44-ФЗ и&nbsp;223-ФЗ. Социальное питание, ведомственные столовые, гарнизоны и&nbsp;вахтовые посёлки на&nbsp;Крайнем Севере.</p>
+        <ul>
+          <li>Все необходимые сертификаты и&nbsp;декларации</li>
+          <li>Стабильность поставок 365 дней в&nbsp;году</li>
+          <li>Отчётность и&nbsp;документооборот «под ключ»</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== WHY US ===================== -->
+  <section class="why" id="why">
+    <div class="why__bg" aria-hidden="true"></div>
+    <header class="section-head section-head--on-light">
+      <span class="section-head__num">02</span>
+      <h2 class="section-head__title">Почему выбирают нас</h2>
+      <p class="section-head__lede">Шесть причин, по которым с&nbsp;нами остаются на&nbsp;годы. Без воды, проверяется по&nbsp;контрактам и&nbsp;маршрутам.</p>
+    </header>
+
+    <div class="why__grid">
+      <article class="why-card">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2"/><path d="M16 9v7l5 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-card__num">17 лет</div>
+        <h3>На рынке с&nbsp;2008&nbsp;года</h3>
+        <p>Прошли два кризиса, санкции и&nbsp;ковид. Контракты, заключённые в&nbsp;первые годы, продолжают работать до&nbsp;сих пор.</p>
+      </article>
+
+      <article class="why-card why-card--accent">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M3 22c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0M3 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 4l3 6h-6l3-6z" fill="currentColor"/></svg>
+        </div>
+        <div class="why-card__num">4 стихии</div>
+        <h3>Море, ЖД, авиа, авто</h3>
+        <p>Возим всеми четырьмя видами транспорта одновременно — потому что в&nbsp;Арктику иначе не&nbsp;добраться. Маршрут под&nbsp;каждый груз.</p>
+      </article>
+
+      <article class="why-card">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2"/><path d="M16 6l3 7-3 3-3-3 3-7zM16 26l3-7-3-3-3 3 3 7z" fill="currentColor"/></svg>
+        </div>
+        <div class="why-card__num">Севморпуть</div>
+        <h3>Знаем Арктику в&nbsp;лицо</h3>
+        <p>Сабетта, Дудинка, Певек, Утренний&nbsp;— регулярные рейсы. Работаем с&nbsp;ледовой проводкой и&nbsp;северными портами.</p>
+      </article>
+
+      <article class="why-card">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="8" cy="8" r="2" fill="currentColor"/><circle cx="16" cy="8" r="2" fill="currentColor"/><circle cx="24" cy="8" r="2" fill="currentColor"/><circle cx="8" cy="16" r="2" fill="currentColor"/><circle cx="16" cy="16" r="3" fill="currentColor"/><circle cx="24" cy="16" r="2" fill="currentColor"/><circle cx="8" cy="24" r="2" fill="currentColor"/><circle cx="16" cy="24" r="2" fill="currentColor"/><circle cx="24" cy="24" r="2" fill="currentColor"/></svg>
+        </div>
+        <div class="why-card__num">2 000</div>
+        <h3>Точек в&nbsp;активной базе</h3>
+        <p>От&nbsp;федеральных сетей до&nbsp;вахтовых столовых. Каждой&nbsp;— подобранная матрица товаров и&nbsp;своя периодичность.</p>
+      </article>
+
+      <article class="why-card">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="7" width="24" height="21" rx="3" stroke="currentColor" stroke-width="2"/><path d="M4 13h24" stroke="currentColor" stroke-width="2"/><path d="M10 4v6M22 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="20" r="3" fill="currentColor"/></svg>
+        </div>
+        <div class="why-card__num">365</div>
+        <h3>Дней в&nbsp;году без&nbsp;остановок</h3>
+        <p>Ни&nbsp;праздники, ни&nbsp;распутица, ни&nbsp;полярная ночь не&nbsp;ломают расписание. У&nbsp;нас собственный автопарк и&nbsp;дежурные бригады.</p>
+      </article>
+
+      <article class="why-card why-card--accent">
+        <div class="why-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M16 3l11 4v8c0 7-5 12-11 14-6-2-11-7-11-14V7l11-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M11 16l3.5 3.5L21 13" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="why-card__num">44-ФЗ · 223-ФЗ</div>
+        <h3>Чистая документация</h3>
+        <p>Все сертификаты, декларации, ветеринарные документы. Готовы к&nbsp;проверкам и&nbsp;тендерам без&nbsp;«вот-вот пришлём».</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== NUMBERS ===================== -->
+  <section class="numbers" id="numbers">
+    <header class="section-head">
+      <span class="section-head__num">03</span>
+      <h2 class="section-head__title">Компания в&nbsp;цифрах</h2>
+      <p class="section-head__lede">Семь чисел, по которым можно понять масштаб без длинных абзацев.</p>
+    </header>
+
+    <div class="numbers__grid">
+      <div class="num"><span class="num__value" data-count-to="4" data-suffix=" млрд ₽">0</span><span class="num__label">годовой оборот</span></div>
+      <div class="num"><span class="num__value" data-count-to="13">0</span><span class="num__label">филиалов и&nbsp;представительств</span></div>
+      <div class="num"><span class="num__value" data-count-to="2000">0</span><span class="num__label">активных торговых точек</span></div>
+      <div class="num"><span class="num__value" data-count-to="270" data-suffix="+">0</span><span class="num__label">сотрудников</span></div>
+      <div class="num"><span class="num__value" data-count-to="20">0</span><span class="num__label">торговых представителей</span></div>
+      <div class="num"><span class="num__value" data-count-to="25">0</span><span class="num__label">машин в&nbsp;автопарке</span></div>
+      <div class="num num--wide"><span class="num__value" data-count-to="8500" data-suffix=" м²">0</span><span class="num__label">холодных и&nbsp;сухих складов суммарно</span></div>
+    </div>
+  </section>
+
+  <!-- ===================== MAP ===================== -->
+  <section class="map-section" id="map">
+    <header class="section-head section-head--light">
+      <span class="section-head__num">04</span>
+      <h2 class="section-head__title">География поставок</h2>
+      <p class="section-head__lede">13 филиалов и&nbsp;представительств. Маршруты — морем, железной&nbsp;дорогой, авиа и&nbsp;автотранспортом. Переключайте режимы — линии перерисовываются.</p>
+    </header>
+
+    <div class="map">
+      <div class="map__controls" role="tablist" aria-label="Тип транспорта">
+        <button class="map__mode is-active" data-mode="all" role="tab" aria-selected="true">
+          <span class="map__mode-icon">●</span> Все маршруты
+        </button>
+        <button class="map__mode" data-mode="sea" role="tab" aria-selected="false">
+          <span class="map__mode-icon">~</span> Морем
+        </button>
+        <button class="map__mode" data-mode="rail" role="tab" aria-selected="false">
+          <span class="map__mode-icon">⫶</span> ЖД
+        </button>
+        <button class="map__mode" data-mode="air" role="tab" aria-selected="false">
+          <span class="map__mode-icon">^</span> Авиа
+        </button>
+        <button class="map__mode" data-mode="road" role="tab" aria-selected="false">
+          <span class="map__mode-icon">▭</span> Автотранспортом
+        </button>
+      </div>
+
+      <div class="map__stage">
+        <div class="map__svg-wrap" id="mapSvgWrap" aria-label="Карта России с филиалами"></div>
+        <aside class="map__panel" id="mapPanel" aria-live="polite">
+          <p class="map__panel-hint">Наведите курсор на&nbsp;точку — увидите карточку филиала.</p>
+        </aside>
+      </div>
+
+      <div class="map__legend">
+        <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--hq"></i> Головной офис</span>
+        <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--warehouse"></i> Склад</span>
+        <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--office"></i> Представительство</span>
+        <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--dest"></i> Точка доставки</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CATEGORIES ===================== -->
+  <section class="categories" id="categories">
+    <header class="section-head">
+      <span class="section-head__num">05</span>
+      <h2 class="section-head__title">Что мы возим</h2>
+      <p class="section-head__lede">Десять направлений. По&nbsp;каждому — отдельная матрица производителей и&nbsp;логистика.</p>
+    </header>
+
+    <div class="categories__grid categories__grid--photo">
+      <a class="catx" href="products.html#frozen">
+        <div class="catx__media">
+          <span class="catx__idx">01</span>
+          <img src="https://images.unsplash.com/photo-1601063476271-a159c71ab0b3?w=600&h=450&fit=crop&q=80" alt="Замороженное сырьё и полуфабрикаты" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Замороженное сырьё и&nbsp;полуфабрикаты</h3>
+          <p class="catx__desc">Мираторг, Морозко, ТМ «Четверг» — заморозка с&nbsp;−25&nbsp;°C на&nbsp;собственном холоде.</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="catx" href="products.html#meat">
+        <div class="catx__media">
+          <span class="catx__idx">02</span>
+          <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&h=450&fit=crop&q=80" alt="Мясо: говядина, свинина, кура" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Мясо: говядина, свинина, кура</h3>
+          <p class="catx__desc">Черкизово, БМК, МК Заволжский, МК Клинский — прямые контракты.</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="catx" href="products.html#fish">
+        <div class="catx__media">
+          <span class="catx__idx">03</span>
+          <img src="https://images.unsplash.com/photo-1535140728325-a4d3707eee61?w=600&h=450&fit=crop&q=80" alt="Рыба и пресервы" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Рыба и&nbsp;пресервы</h3>
+          <p class="catx__desc">Санта Бремор, Vici, Балтийский Берег, Фрегат, Викинг, Kuzuoglu.</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="catx" href="products.html#cheese">
+        <div class="catx__media">
+          <span class="catx__idx">04</span>
+          <img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?w=600&h=450&fit=crop&q=80" alt="Молочка и сыры" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Молочка и&nbsp;сыры</h3>
+          <p class="catx__desc">Савушкин Продукт, Хохланд, Брест-Литовск, Бобровский сырзавод, ТМ «Стародуб».</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="catx" href="products.html#sausage">
+        <div class="catx__media">
+          <span class="catx__idx">05</span>
+          <img src="https://images.unsplash.com/photo-1597177556099-b7c8e3b8c4e0?w=600&h=450&fit=crop&q=80" alt="Колбасные изделия" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Колбасные изделия</h3>
+          <p class="catx__desc">Анком, Иней, Окраина, Останкино, ТМ «Стародворье», ТМ «Гродно».</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="catx" href="products.html#oils">
+        <div class="catx__media">
+          <span class="catx__idx">06</span>
+          <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&h=450&fit=crop&q=80" alt="Масложировая и майонезы" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Масложировая и&nbsp;майонезы</h3>
+          <p class="catx__desc">SolPro, Aura, Махеев, Efko Food, Ильинское-95, ТМ «Царский».</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="catx" href="products.html#canned">
+        <div class="catx__media">
+          <span class="catx__idx">07</span>
+          <img src="https://images.unsplash.com/photo-1593001874117-c99c800e3eb7?w=600&h=450&fit=crop&q=80" alt="Консервация" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Консервация</h3>
+          <p class="catx__desc">Sunfeel, Maysun, «6 соток», Помидорка, ТМ «Дядя Ваня», «Баба Маня».</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="catx" href="products.html#grocery">
+        <div class="catx__media">
+          <span class="catx__idx">08</span>
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=450&fit=crop&q=80" alt="Бакалея и напитки" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Бакалея и&nbsp;напитки</h3>
+          <p class="catx__desc">Боржоми, Святой Источник, ТМ «Колобок», ТМ «Снежская», ТМ «Дымка».</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="catx" href="products.html#veg">
+        <div class="catx__media">
+          <span class="catx__idx">09</span>
+          <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=600&h=450&fit=crop&q=80" alt="Ягодно-овощная продукция" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Ягодно-овощная продукция</h3>
+          <p class="catx__desc">Заморозка, свежие овощи и&nbsp;ягоды от&nbsp;южных и&nbsp;северо-западных поставщиков.</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="catx" href="products.html#nonfood">
+        <div class="catx__media">
+          <span class="catx__idx">10</span>
+          <img src="https://images.unsplash.com/photo-1605745341112-85968b19335b?w=600&h=450&fit=crop&q=80" alt="Non food, хозтовары и контейнеры" loading="lazy" />
+        </div>
+        <div class="catx__body">
+          <h3 class="catx__title">Non&nbsp;food + хозтовары + контейнеры</h3>
+          <p class="catx__desc">Поставка и&nbsp;ремонт рефрижераторных и&nbsp;сухогрузных контейнеров.</p>
+          <span class="catx__more">Подробнее <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+    </div>
+
+    <div class="categories__cta">
+      <a href="products.html" class="btn btn--solid btn--lg">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Перейти в каталог
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== PARTNERS ===================== -->
+  <section class="partners" id="partners">
+    <header class="section-head">
+      <span class="section-head__num">06</span>
+      <h2 class="section-head__title">С&nbsp;кем работаем</h2>
+      <p class="section-head__lede">Сверху — торговые сети, для которых мы&nbsp;поставщик. Снизу — бренды и&nbsp;контракты, по&nbsp;которым мы&nbsp;везём товар.</p>
+    </header>
+
+    <div class="marquee" aria-label="Торговые сети">
+      <div class="marquee__track">
+        <span>Светофор</span><span>Доброцен</span><span>Лето</span><span>Меркурий</span><span>Макси</span><span>Петровский</span><span>Диал</span><span>Гарант</span><span>Союз</span><span>Золотые пески</span>
+        <span>Светофор</span><span>Доброцен</span><span>Лето</span><span>Меркурий</span><span>Макси</span><span>Петровский</span><span>Диал</span><span>Гарант</span><span>Союз</span><span>Золотые пески</span>
+      </div>
+    </div>
+
+    <div class="marquee marquee--reverse" aria-label="Бренды и контракты">
+      <div class="marquee__track">
+        <span>Черкизово</span><span>Мираторг</span><span>Морозко</span><span>Хохланд</span><span>Савушкин Продукт</span><span>Брест-Литовск</span><span>Vici</span><span>Санта Бремор</span><span>Окраина</span><span>Останкино</span><span>Махеев</span><span>Эфко</span><span>Боржоми</span><span>Святой Источник</span><span>Помидорка</span><span>Дядя Ваня</span>
+        <span>Черкизово</span><span>Мираторг</span><span>Морозко</span><span>Хохланд</span><span>Савушкин Продукт</span><span>Брест-Литовск</span><span>Vici</span><span>Санта Бремор</span><span>Окраина</span><span>Останкино</span><span>Махеев</span><span>Эфко</span><span>Боржоми</span><span>Святой Источник</span><span>Помидорка</span><span>Дядя Ваня</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== INFRASTRUCTURE ===================== -->
+  <section class="infra" id="infra">
+    <header class="section-head">
+      <span class="section-head__num">07</span>
+      <h2 class="section-head__title">Инфраструктура</h2>
+      <p class="section-head__lede">Свои склады, своя техника, свои люди на&nbsp;местах.</p>
+    </header>
+
+    <div class="infra__grid">
+      <div class="infra-card">
+        <div class="infra-card__num">4&nbsp;500&nbsp;<span>м²</span></div>
+        <h3>Холодильные склады</h3>
+        <p>Температурный режим от&nbsp;−25&nbsp;до&nbsp;+10&nbsp;°C. Хранение мяса, рыбы, заморозки, молочки.</p>
+      </div>
+      <div class="infra-card">
+        <div class="infra-card__num">4&nbsp;000&nbsp;<span>м²</span></div>
+        <h3>Сухие склады</h3>
+        <p>Бакалея, консервация, масложировая, напитки, non-food и&nbsp;хозтовары.</p>
+      </div>
+      <div class="infra-card">
+        <div class="infra-card__num">25 <span>машин</span></div>
+        <h3>Собственный автопарк</h3>
+        <p>Рефрижераторы и&nbsp;сухогрузный транспорт разной грузоподъёмности по&nbsp;всему маршруту.</p>
+      </div>
+      <div class="infra-card">
+        <div class="infra-card__num">20 <span>торгпредов</span></div>
+        <h3>Менеджеры на&nbsp;местах</h3>
+        <p>В&nbsp;каждом крупном регионе работают свои представители — короткий путь от&nbsp;заявки до&nbsp;поставки.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TEAM ===================== -->
+  <section class="team" id="team">
+    <div class="team__bg" aria-hidden="true"></div>
+    <header class="section-head section-head--on-light">
+      <span class="section-head__num">08</span>
+      <h2 class="section-head__title">Команда Торгового дома</h2>
+      <p class="section-head__lede">Люди, которые держат поставки в рабочем ритме 365 дней в&nbsp;году. Сюда попадают не по&nbsp;резюме, а&nbsp;по&nbsp;результату.</p>
+    </header>
+
+    <div class="team__grid team__grid--photo">
+      <article class="team-card team-card--photo">
+        <div class="team-card__photo">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=720&fit=crop&crop=faces&q=80" alt="Михаил Архипов" loading="lazy" />
+          <span class="team-card__role-pill">Основатель</span>
+        </div>
+        <div class="team-card__body">
+          <h3>Михаил Архипов</h3>
+          <span class="team-card__role">Генеральный директор и&nbsp;основатель</span>
+          <p>Основал компанию в&nbsp;2008-м. Лично переговаривает ключевые контракты на&nbsp;Севморпуть.</p>
+        </div>
+      </article>
+
+      <article class="team-card team-card--photo">
+        <div class="team-card__photo">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=720&fit=crop&crop=faces&q=80" alt="Елена Архипова" loading="lazy" />
+          <span class="team-card__role-pill">Финансы</span>
+        </div>
+        <div class="team-card__body">
+          <h3>Елена Архипова</h3>
+          <span class="team-card__role">Финансовый директор</span>
+          <p>17 лет в&nbsp;компании. Сверяет отчётность, контролирует платежи и&nbsp;банковские риски по&nbsp;крупным сделкам.</p>
+        </div>
+      </article>
+
+      <article class="team-card team-card--photo">
+        <div class="team-card__photo">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=720&fit=crop&crop=faces&q=80" alt="Сергей Полежаев" loading="lazy" />
+          <span class="team-card__role-pill">Коммерция</span>
+        </div>
+        <div class="team-card__body">
+          <h3>Сергей Полежаев</h3>
+          <span class="team-card__role">Коммерческий директор</span>
+          <p>Отвечает за&nbsp;прямые контракты с&nbsp;производителями. 2&nbsp;000+ торговых точек в&nbsp;базе — его рук.</p>
+        </div>
+      </article>
+
+      <article class="team-card team-card--photo">
+        <div class="team-card__photo">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=720&fit=crop&crop=faces&q=80" alt="Александр Чернышёв" loading="lazy" />
+          <span class="team-card__role-pill">Логистика</span>
+        </div>
+        <div class="team-card__body">
+          <h3>Александр Чернышёв</h3>
+          <span class="team-card__role">Директор по&nbsp;логистике и&nbsp;Севморпути</span>
+          <p>Бывший капитан-наставник. Рассчитывает ледовую проводку и&nbsp;ведёт рейсы на&nbsp;Сабетту и&nbsp;Певек.</p>
+        </div>
+      </article>
+
+      <article class="team-card team-card--photo">
+        <div class="team-card__photo">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=720&fit=crop&crop=faces&q=80" alt="Ирина Соловьёва" loading="lazy" />
+          <span class="team-card__role-pill">Розница</span>
+        </div>
+        <div class="team-card__body">
+          <h3>Ирина Соловьёва</h3>
+          <span class="team-card__role">Руководитель отдела розницы</span>
+          <p>Работает со&nbsp;«Светофором», «Доброценом», «Макси» и&nbsp;прочими. Следит за&nbsp;качеством поставок и&nbsp;логистикой на&nbsp;местах.</p>
+        </div>
+      </article>
+
+      <article class="team-card team-card--photo">
+        <div class="team-card__photo">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=720&fit=crop&crop=faces&q=80" alt="Дмитрий Морозов" loading="lazy" />
+          <span class="team-card__role-pill">Госконтракты</span>
+        </div>
+        <div class="team-card__body">
+          <h3>Дмитрий Морозов</h3>
+          <span class="team-card__role">Руководитель госконтрактов</span>
+          <p>44-ФЗ, 223-ФЗ, ведомственные столовые и&nbsp;вахты. Ни&nbsp;одного срыва сроков за&nbsp;последние 5&nbsp;лет.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== CHARITY ===================== -->
+  <section class="charity" id="charity">
+    <div class="charity__decor" aria-hidden="true">
+      <svg viewBox="0 0 280 280" fill="none">
+        <circle cx="140" cy="140" r="120" stroke="#F2A341" stroke-opacity="0.18" stroke-width="2" stroke-dasharray="4 6"/>
+        <circle cx="140" cy="140" r="90" stroke="#F2A341" stroke-opacity="0.28" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <path d="M140 92c-12-22-50-12-50 14 0 26 30 44 50 60 20-16 50-34 50-60 0-26-38-36-50-14z" fill="#F2A341"/>
+        <path d="M140 92c-12-22-50-12-50 14 0 26 30 44 50 60 20-16 50-34 50-60 0-26-38-36-50-14z" fill="#FFB35C" fill-opacity="0.4"/>
+      </svg>
+    </div>
+
+    <div class="charity__inner">
+      <header class="charity__head">
+        <span class="charity__eyebrow">Не только бизнес</span>
+        <h2 class="charity__title">Грузовики возят еду и туда, где её ждут&nbsp;бесплатно.</h2>
+        <p class="charity__text">Помимо коммерческих поставок мы передаём продукты детским домам, приютам для животных и социальным столовым Архангельской области и соседних регионов.</p>
+      </header>
+
+      <div class="charity__stats">
+        <div class="charity-stat">
+          <div class="charity-stat__num">47 тонн</div>
+          <div class="charity-stat__label">продуктов передано в&nbsp;2024–2026</div>
+        </div>
+        <div class="charity-stat">
+          <div class="charity-stat__num">12</div>
+          <div class="charity-stat__label">детских домов, приютов и&nbsp;столовых</div>
+        </div>
+        <div class="charity-stat">
+          <div class="charity-stat__num">8 лет</div>
+          <div class="charity-stat__label">без&nbsp;перерывов, каждый&nbsp;квартал</div>
+        </div>
+      </div>
+
+      <div class="charity__cards">
+        <article class="charity-card">
+          <div class="charity-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M4 28V14l12-8 12 8v14H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 28v-8h8v8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Детские дома</h3>
+          <p>«Северное сияние» в&nbsp;Котласе, «Созвездие» в&nbsp;Северодвинске и&nbsp;ещё 6&nbsp;учреждений Архангельской области.</p>
+          <span class="charity-card__tag">8&nbsp;учреждений</span>
+        </article>
+
+        <article class="charity-card">
+          <div class="charity-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><circle cx="10" cy="12" r="3" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M8 22c0-4 3.5-6 8-6s8 2 8 6v4H8v-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="16" cy="15" r="2" fill="currentColor"/></svg>
+          </div>
+          <h3>Приюты для&nbsp;животных</h3>
+          <p>«Дай лапу» в&nbsp;Северодвинске и&nbsp;«Ковчег» в&nbsp;Архангельске: корма, лекарства, ремонт вольеров.</p>
+          <span class="charity-card__tag">2&nbsp;приюта</span>
+        </article>
+
+        <article class="charity-card">
+          <div class="charity-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M6 28V12l10-6 10 6v16" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M2 28h28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 19h6M12 23h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Социальные столовые</h3>
+          <p>Бесплатные обеды в&nbsp;Северодвинске и&nbsp;Котласе. Получатели — пожилые люди и&nbsp;люди без&nbsp;жилья.</p>
+          <span class="charity-card__tag">2&nbsp;столовые</span>
+        </article>
+      </div>
+
+      <div class="charity__cta">
+        <p>Хотите подключиться? Мы&nbsp;всегда открыты к&nbsp;партнёрству — бизнесу, фондам и&nbsp;частным людям.</p>
+        <a href="#contact" class="btn btn--solid">Написать нам</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWS ===================== -->
+  <section class="news" id="news">
+    <header class="section-head">
+      <span class="section-head__num">09</span>
+      <h2 class="section-head__title">Что у&nbsp;нас происходит</h2>
+      <p class="section-head__lede">Новости компании, контрактов и&nbsp;логистики. Обновляется еженедельно.</p>
+    </header>
+
+    <div class="news__slider" id="newsSlider">
+      <div class="news__track" id="newsTrack" aria-live="polite"></div>
+      <button class="news__nav news__nav--prev" id="newsPrev" aria-label="Предыдущая новость">‹</button>
+      <button class="news__nav news__nav--next" id="newsNext" aria-label="Следующая новость">›</button>
+      <div class="news__dots" id="newsDots" aria-label="Навигация по новостям"></div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact" id="contact">
+    <div class="contact__inner">
+      <div class="contact__left">
+        <h2 class="contact__title">Запросите коммерческое предложение</h2>
+        <p class="contact__lede">Расскажите, что нужно поставить и&nbsp;куда. Менеджер свяжется в&nbsp;течение одного рабочего дня.</p>
+        <ul class="contact__list">
+          <li>
+            <span>Телефон</span>
+            <a href="tel:+78124500094">+7 (812) 450-00-94</a>
+            <a href="tel:+79116769640">+7 (911) 676-96-40</a>
+          </li>
+          <li>
+            <span>Почта</span>
+            <a href="mailto:info@arkhipov-td.ru">info@arkhipov-td.ru</a>
+          </li>
+          <li>
+            <span>Соцсети</span>
+            <a href="https://vk.com/arkhipov_m_a" target="_blank" rel="noopener">ВКонтакте</a>
+          </li>
+          <li>
+            <span>Главный офис</span>
+            <em>г.&nbsp;Северодвинск, Архангельская область</em>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact__form" id="contactForm" novalidate>
+        <label class="field">
+          <span>Имя</span>
+          <input type="text" name="name" placeholder="Как к вам обращаться" required />
+        </label>
+        <label class="field">
+          <span>Телефон</span>
+          <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required />
+        </label>
+        <label class="field">
+          <span>Что нужно поставить</span>
+          <input type="text" name="what" placeholder="Например: заморозка, сыры, бакалея" />
+        </label>
+        <label class="field">
+          <span>Куда</span>
+          <input type="text" name="where" placeholder="Город / порт / посёлок" />
+        </label>
+        <label class="field field--full">
+          <span>Комментарий</span>
+          <textarea name="message" rows="3" placeholder="Объёмы, периодичность, особые требования"></textarea>
+        </label>
+        <div class="field field--full field--actions">
+          <button type="submit" class="btn btn--solid btn--lg">Отправить заявку</button>
+          <small>Отправляя форму, вы&nbsp;соглашаетесь с&nbsp;<a href="#">политикой обработки персональных данных</a>.</small>
+        </div>
+        <p class="contact__success" id="contactSuccess" hidden>
+          Спасибо! Заявка принята. Менеджер свяжется в&nbsp;течение&nbsp;1 рабочего дня.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <a href="#" class="logo logo--footer">
+          <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".4" />
+            <path d="M20 4 L33 32 L20 26 L7 32 Z" fill="currentColor" />
+          </svg>
+          <span><strong>ТД Архипов М.А.</strong><em>Северодвинск · Архангельск · СПб · ещё&nbsp;10 точек</em></span>
+        </a>
+        <p class="site-footer__about">
+          ИП Архипов М.А. Один из&nbsp;крупнейших поставщиков продуктов питания
+          на&nbsp;Севере России и&nbsp;по&nbsp;Северному морскому пути.
+        </p>
+      </div>
+
+       <div>
+        <h4>Навигация</h4>
+        <a href="#map">География</a>
+        <a href="#numbers">Цифры</a>
+        <a href="products.html">Продукция</a>
+        <a href="#partners">Партнёры</a>
+        <a href="#news">Новости</a>
+        <a href="#contact">Контакты</a>
+      </div>
+
+      <div>
+        <h4>Контакты</h4>
+        <a href="tel:+78124500094">+7 (812) 450-00-94</a>
+        <a href="tel:+79116769640">+7 (911) 676-96-40</a>
+        <a href="mailto:info@arkhipov-td.ru">info@arkhipov-td.ru</a>
+        <a href="https://vk.com/arkhipov_m_a" target="_blank" rel="noopener">vk.com/arkhipov_m_a</a>
+      </div>
+
+      <div>
+        <h4>Документы</h4>
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Реквизиты ИП</a>
+        <a href="#">Договор-оферта</a>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© 2026 ИП Архипов М.А. Все права защищены.</span>
+      <span>Сделано без шаблонов.</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/preloader.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/map.js"></script>
+  <script src="assets/js/news.js"></script>
+</body>
+</html>
