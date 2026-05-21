@@ -56,13 +56,21 @@
       if (path) path.classList.add('is-active-region');
     });
 
+    // Пути регионов в этом SVG сдвинуты общим transform (translate).
+    // Чтобы маркеры и маршруты сели на карту точно, переносим тот же сдвиг
+    // на наши слои — тогда координаты из branches.json совпадают с географией.
+    const samplePath = svgRoot.querySelector('path[transform]');
+    const mapTransform = samplePath ? samplePath.getAttribute('transform') : null;
+
     // Слои поверх карты
     routesLayer = document.createElementNS(SVG_NS, 'g');
     routesLayer.setAttribute('class', 'map-routes');
+    if (mapTransform) routesLayer.setAttribute('transform', mapTransform);
     svgRoot.appendChild(routesLayer);
 
     pointsLayer = document.createElementNS(SVG_NS, 'g');
     pointsLayer.setAttribute('class', 'map-points');
+    if (mapTransform) pointsLayer.setAttribute('transform', mapTransform);
     svgRoot.appendChild(pointsLayer);
 
     // Маркеры филиалов
@@ -226,26 +234,31 @@
         const len = pulse.getTotalLength();
         // Видимый штрих ~18% длины (но не длиннее 26px), остальное — пробег
         const seg = Math.max(10, Math.min(26, len * 0.18));
+        // Период паттерна = штрих + пробел. Пробел делаем равным длине пути,
+        // чтобы на пути всегда был ровно один штрих.
         pulse.style.strokeDasharray = seg + ' ' + len;
 
-        // Уважаем «уменьшить движение»: тогда импульс просто не бежит
+        // Уважаем «уменьшить движение»: тогда импульс просто стоит на месте
         if (prefersReducedMotion) {
           pulse.style.strokeDashoffset = 0;
           return;
         }
 
         // Движение через Web Animations API — надёжнее CSS var() в @keyframes.
-        // За один период штрих проходит всю длину пути + свою длину (бесшовно).
-        const period = len + seg;
+        // Ключ к бесшовности: за одну итерацию offset смещается ровно на период
+        // паттерна (seg + len). Тогда конечный кадр визуально совпадает с
+        // начальным, и на стыке циклов нет скачка «назад».
+        const period = seg + len;
         const dur = Math.max(2200, Math.min(5500, len * 11)); // мс: дальше — дольше
         const anim = pulse.animate(
           [
             { strokeDashoffset: period },
-            { strokeDashoffset: -seg },
+            { strokeDashoffset: 0 },
           ],
           { duration: dur, iterations: Infinity, easing: 'linear' }
         );
-        // Случайный сдвиг фазы, чтобы импульсы не летели синхронно
+        // Случайный сдвиг фазы, чтобы импульсы не летели синхронно.
+        // Привязываем к периоду анимации, чтобы старт не давал визуального рывка.
         anim.currentTime = Math.random() * dur;
       });
     });
