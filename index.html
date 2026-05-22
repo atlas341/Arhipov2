@@ -26,7 +26,45 @@
         <li class="preloader__word">Качество</li>
         <li class="preloader__word">Север</li>
       </ul>
-      <div class="preloader__progress" aria-hidden="true"><span></span></div>
+      <div class="preloader__loader" aria-hidden="true">
+        <div class="preloader__truck">
+          <svg viewBox="0 0 192 52" width="146" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- полуприцеп (фура) -->
+            <rect x="4" y="10" width="120" height="24" rx="2" fill="#C73E2D"/>
+            <!-- рёбра борта прицепа -->
+            <g fill="#0B1B2B" opacity=".09">
+              <rect x="20" y="13" width="1.3" height="18"/>
+              <rect x="36" y="13" width="1.3" height="18"/>
+              <rect x="52" y="13" width="1.3" height="18"/>
+              <rect x="68" y="13" width="1.3" height="18"/>
+            </g>
+            <!-- надпись на борту -->
+            <text x="63" y="25" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="11" fill="#FBF3EA" letter-spacing="0.6">ИП АРХИПОВ</text>
+            <!-- сцепка прицеп-тягач -->
+            <rect x="124" y="30" width="6" height="4" fill="#9E2D20"/>
+            <!-- кабина тягача -->
+            <path d="M129 34V12c0-2 1.6-3.6 3.6-3.6h20c1.4 0 2.7 1 3.1 2.4 1.1.9 2 2 2.7 3.2l2.3 4.1c1 1.8 2 3.8 2 5.9V34H129z" fill="#C73E2D"/>
+            <!-- лобовое стекло -->
+            <path d="M155.4 11.2c-.5-1.4-1.8-2-3.2-2H134c-.8 0-1.4.6-1.4 1.4v7.6c0 .8.6 1.5 1.4 1.5h25.2c-.5-1.7-1.3-3.4-2.2-4.9l-1.6-2.6z" fill="#0B1B2B" opacity=".5"/>
+            <!-- стойка кабины -->
+            <rect x="132.4" y="9" width="2.2" height="25" fill="#A82E22"/>
+            <!-- нос/бампер -->
+            <path d="M167 26v6c0 1.1-.9 2-2 2h-2.5V21h.1c2.4 0 4.4 1.8 4.4 4z" fill="#9E2D20"/>
+            <!-- фара -->
+            <rect x="161.5" y="18" width="4" height="3.2" rx="1.4" fill="#FFE3B0"/>
+            <!-- порог кабины -->
+            <rect x="130" y="30" width="32" height="4" rx="1" fill="#A82E22"/>
+            <!-- тройная ось прицепа (хвост) -->
+            <circle cx="30" cy="38" r="8" fill="#1a1411"/><circle cx="30" cy="38" r="3.2" fill="#C73E2D"/>
+            <circle cx="48" cy="38" r="8" fill="#1a1411"/><circle cx="48" cy="38" r="3.2" fill="#C73E2D"/>
+            <circle cx="66" cy="38" r="8" fill="#1a1411"/><circle cx="66" cy="38" r="3.2" fill="#C73E2D"/>
+            <!-- оси тягача (перед + зад) -->
+            <circle cx="116" cy="38" r="8" fill="#1a1411"/><circle cx="116" cy="38" r="3.2" fill="#C73E2D"/>
+            <circle cx="148" cy="38" r="8" fill="#1a1411"/><circle cx="148" cy="38" r="3.2" fill="#C73E2D"/>
+          </svg>
+        </div>
+        <div class="preloader__progress"><span></span></div>
+      </div>
     </div>
   </div>
 
@@ -710,10 +748,10 @@
   <footer class="site-footer">
     <div class="site-footer__inner">
       <div>
-        <a href="#" class="logo logo--footer">
-          <img class="logo__img" src="assets/img/logo/logo-round.png" alt="" aria-hidden="true" width="46" height="46" />
-          <span><strong>ИП Архипов М.А.</strong><em>Северодвинск · Архангельск · СПб · ещё&nbsp;10 точек</em></span>
+        <a href="#" class="logo logo--footer logo--horiz" aria-label="ИП Архипов М.А. — Торговый дом">
+          <img class="logo__horiz-img" src="assets/img/logo/logo-horiz.png" alt="ИП Архипов М.А. — Торговый дом" width="240" height="86" />
         </a>
+        <p class="site-footer__cities">Северодвинск · Архангельск · СПб · ещё&nbsp;10 точек</p>
         <p class="site-footer__about">
           ИП Архипов М.А. Один из&nbsp;крупнейших поставщиков продуктов питания
           на&nbsp;Севере России и&nbsp;по&nbsp;Северному морскому пути.
