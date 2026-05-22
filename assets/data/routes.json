@@ -5,13 +5,42 @@
       "icon": "wave",
       "color": "#4FB7FF",
       "routes": [
-        ["spb", "kaliningrad"],
-        ["murmansk", "sabetta"],
-        ["murmansk", "dudinka"],
-        ["arhangelsk", "sabetta"],
-        ["novorossiysk", "spb"],
-        ["vladivostok", "anadyr"],
-        ["vladivostok", "pevek"]
+        [
+          "spb",
+          "kaliningrad"
+        ],
+        [
+          "murmansk",
+          "sabetta"
+        ],
+        [
+          "murmansk",
+          "dudinka"
+        ],
+        [
+          "arhangelsk",
+          "sabetta"
+        ],
+        [
+          "novorossiysk",
+          "spb"
+        ],
+        [
+          "vladivostok",
+          "anadyr"
+        ],
+        [
+          "vladivostok",
+          "pevek"
+        ],
+        [
+          "vladivostok",
+          "sakhalin"
+        ],
+        [
+          "novorossiysk",
+          "rostov"
+        ]
       ]
     },
     "rail": {
@@ -19,13 +48,54 @@
       "icon": "rail",
       "color": "#F2A341",
       "routes": [
-        ["severodvinsk", "arhangelsk"],
-        ["arhangelsk", "kotlas"],
-        ["kotlas", "vorkuta"],
-        ["spb", "arhangelsk"],
-        ["spb", "kaliningrad"],
-        ["arhangelsk", "rostov"],
-        ["rostov", "vladivostok"]
+        [
+          "severodvinsk",
+          "arhangelsk"
+        ],
+        [
+          "arhangelsk",
+          "kotlas"
+        ],
+        [
+          "kotlas",
+          "vorkuta"
+        ],
+        [
+          "spb",
+          "arhangelsk"
+        ],
+        [
+          "spb",
+          "kaliningrad"
+        ],
+        [
+          "arhangelsk",
+          "rostov"
+        ],
+        [
+          "rostov",
+          "vladivostok"
+        ],
+        [
+          "moscow",
+          "spb"
+        ],
+        [
+          "moscow",
+          "rostov"
+        ],
+        [
+          "krasnoyarsk",
+          "vladivostok"
+        ],
+        [
+          "surgut",
+          "krasnoyarsk"
+        ],
+        [
+          "khabarovsk",
+          "vladivostok"
+        ]
       ]
     },
     "air": {
@@ -33,12 +103,42 @@
       "icon": "plane",
       "color": "#9EE493",
       "routes": [
-        ["arhangelsk", "anadyr"],
-        ["arhangelsk", "norilsk"],
-        ["arhangelsk", "novyy-urengoy"],
-        ["arhangelsk", "sabetta"],
-        ["arhangelsk", "utrenniy"],
-        ["vladivostok", "anadyr"]
+        [
+          "arhangelsk",
+          "anadyr"
+        ],
+        [
+          "arhangelsk",
+          "norilsk"
+        ],
+        [
+          "arhangelsk",
+          "novyy-urengoy"
+        ],
+        [
+          "arhangelsk",
+          "sabetta"
+        ],
+        [
+          "arhangelsk",
+          "utrenniy"
+        ],
+        [
+          "vladivostok",
+          "anadyr"
+        ],
+        [
+          "yakutsk",
+          "khabarovsk"
+        ],
+        [
+          "krasnoyarsk",
+          "norilsk"
+        ],
+        [
+          "surgut",
+          "yakutsk"
+        ]
       ]
     },
     "road": {
@@ -46,13 +146,58 @@
       "icon": "truck",
       "color": "#E6E0D4",
       "routes": [
-        ["severodvinsk", "arhangelsk"],
-        ["arhangelsk", "kotlas"],
-        ["spb", "arhangelsk"],
-        ["spb", "kaliningrad"],
-        ["rostov", "novorossiysk"],
-        ["rostov", "spb"],
-        ["arhangelsk", "vorkuta"]
+        [
+          "severodvinsk",
+          "arhangelsk"
+        ],
+        [
+          "arhangelsk",
+          "kotlas"
+        ],
+        [
+          "spb",
+          "arhangelsk"
+        ],
+        [
+          "spb",
+          "kaliningrad"
+        ],
+        [
+          "rostov",
+          "novorossiysk"
+        ],
+        [
+          "rostov",
+          "spb"
+        ],
+        [
+          "arhangelsk",
+          "vorkuta"
+        ],
+        [
+          "moscow",
+          "spb"
+        ],
+        [
+          "moscow",
+          "petrozavodsk"
+        ],
+        [
+          "rostov",
+          "donetsk"
+        ],
+        [
+          "donetsk",
+          "lugansk"
+        ],
+        [
+          "donetsk",
+          "mariupol"
+        ],
+        [
+          "nefteyugansk",
+          "surgut"
+        ]
       ]
     }
   }

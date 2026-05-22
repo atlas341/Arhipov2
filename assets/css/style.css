@@ -160,9 +160,10 @@ button { font-family: inherit; }
 .preloader__bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(60% 60% at 50% 40%, rgba(242,163,65,.10) 0%, transparent 70%),
-    radial-gradient(40% 40% at 80% 80%, rgba(199,62,45,.12) 0%, transparent 70%),
-    var(--bg-deep);
+    /* лёгкое затемнение по краям — для глубины и читаемости логотипа/текста */
+    radial-gradient(80% 80% at 50% 45%, transparent 40%, rgba(0,0,0,.22) 100%),
+    url("../img/preloader-bg.png") center / cover no-repeat,
+    #C0271C;
 }
 
 .preloader__content {
@@ -252,7 +253,7 @@ button { font-family: inherit; }
   /* нос фуры совпадает с передним краем полоски:
      едем от 0 до полной ширины, в конце сдвигаем на свою ширину влево */
   animation: truck-drive 5s var(--ease) forwards;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,.5));
+  filter: drop-shadow(0 0 1.5px rgba(255,255,255,.9)) drop-shadow(0 4px 10px rgba(0,0,0,.45));
   z-index: 2;
 }
 .preloader__truck > svg { display: block; }
@@ -491,6 +492,15 @@ button { font-family: inherit; }
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+}
+.hero__slogan {
+  margin-top: 28px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(18px, 2.4vw, 26px);
+  font-style: italic;
+  color: var(--accent);
+  letter-spacing: .01em;
 }
 
 /* ticker */
