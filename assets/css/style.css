@@ -1993,20 +1993,47 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   .contact__inner { grid-template-columns: 1fr; gap: 32px; }
 }
 
+@keyframes menu-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 @media (max-width: 880px) {
   .site-header__nav { display: none; }
   .header-cta { display: none; }
   .site-header__burger { display: flex; }
+
+  /* Полноэкранное мобильное меню */
   .site-header__nav.is-open {
     display: flex;
     position: fixed;
-    top: 64px; left: 0; right: 0;
-    background: var(--bg-alt);
+    inset: 0;
+    z-index: 90;
     flex-direction: column;
-    padding: 20px var(--gutter);
-    border-bottom: 1px solid var(--line);
-    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 80px 24px 40px;
+    background: linear-gradient(160deg, #2A1A14 0%, #1d120d 100%);
+    animation: menu-fade-in .3s ease forwards;
   }
+  .site-header__nav.is-open a {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--paper-on-dark);
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    transition: color .2s, transform .2s;
+  }
+  .site-header__nav.is-open a:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+  .site-header__nav.is-open a::after { display: none; }
+  .site-header__nav.is-open a:hover,
+  .site-header__nav.is-open a:active { color: var(--accent); }
+
   .stories__grid,
   .categories__grid,
   .infra__grid,
@@ -2043,16 +2070,46 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   .story ul li::before { display: none; }
   .contact__left { text-align: center; }
   .contact__list { display: inline-block; text-align: center; }
-  .charity__cta { text-align: center; }
+  /* числа компании и благотворительность — по центру */
+  .num { text-align: center; align-items: center; }
+  .charity-stat { text-align: center; }
+  /* CTA благотворительности: текст и кнопка по центру */
+  .charity__cta { flex-direction: column; text-align: center; gap: 18px; }
+  .charity__cta p { flex: none; }
 }
 
 @media (max-width: 520px) {
-  .site-footer__inner { grid-template-columns: 1fr; }
   .hero__inner { margin: 96px auto 60px; text-align: center; }
   .hero__cta-row { justify-content: center; }
   .hero__eyebrow, .hero__slogan { width: 100%; }
   .map__stage { padding: 14px; }
   .field--actions { flex-direction: column; align-items: flex-start; }
+
+  /* Мобильный футер — аккуратный, по центру */
+  .site-footer { padding: 48px 20px 28px; }
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+    justify-items: center;
+  }
+  .site-footer__inner > div { width: 100%; }
+  .logo--horiz { margin: 0 auto; }
+  .site-footer__cities,
+  .site-footer__about { margin-left: auto; margin-right: auto; }
+  .site-footer__about { max-width: 32ch; }
+  .site-footer h4 { margin-bottom: 14px; }
+  /* ссылки колонок — крупнее, по центру, с лёгкими разделителями */
+  .site-footer__inner > div:not(:first-child) {
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding-top: 24px;
+  }
+  .site-footer div > a { display: block; padding: 7px 0; }
+  .site-footer__bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
