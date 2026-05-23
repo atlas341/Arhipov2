@@ -16,17 +16,55 @@
   const burger = document.getElementById('burgerBtn');
   const nav = document.querySelector('.site-header__nav');
   if (burger && nav) {
+    const navHome = nav.parentNode;            // запоминаем родителя (header)
+    const navAnchor = document.createComment('nav-anchor'); // место возврата
+    navHome.insertBefore(navAnchor, nav);
+
+    const openMenu = () => {
+      // выносим меню в body — иначе backdrop-filter хедера ломает position:fixed
+      document.body.appendChild(nav);
+      nav.classList.add('is-open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden'; // блокируем прокрутку фона
+    };
+    const closeMenu = () => {
+      nav.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      navAnchor.parentNode.insertBefore(nav, navAnchor); // возвращаем на место
+    };
+
     burger.addEventListener('click', () => {
-      const open = nav.classList.toggle('is-open');
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (nav.classList.contains('is-open')) closeMenu();
+      else openMenu();
     });
     nav.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') {
-        nav.classList.remove('is-open');
-        burger.setAttribute('aria-expanded', 'false');
-      }
+      if (e.target.tagName === 'A') closeMenu();
+    });
+    // закрытие по Esc
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) closeMenu();
     });
   }
+
+  // -------- Footer accordions (mobile) --------
+  const footerCols = document.querySelectorAll('.footer-col');
+  const mqMobile = window.matchMedia('(max-width: 520px)');
+  footerCols.forEach((col) => {
+    const head = col.querySelector('h4');
+    if (!head) return;
+    head.setAttribute('role', 'button');
+    head.setAttribute('tabindex', '0');
+    const toggle = () => {
+      if (!mqMobile.matches) return; // на десктопе ничего не сворачиваем
+      col.classList.toggle('is-open');
+      head.setAttribute('aria-expanded', col.classList.contains('is-open') ? 'true' : 'false');
+    };
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
 
   // -------- Reveal on scroll for select containers --------
   const revealTargets = document.querySelectorAll(

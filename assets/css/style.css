@@ -2083,28 +2083,71 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   .hero__cta-row { justify-content: center; }
   .hero__eyebrow, .hero__slogan { width: 100%; }
   .map__stage { padding: 14px; }
-  .field--actions { flex-direction: column; align-items: flex-start; }
+  .field--actions { flex-direction: column; align-items: center; text-align: center; }
 
   /* Мобильный футер — аккуратный, по центру */
   .site-footer { padding: 48px 20px 28px; }
   .site-footer__inner {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 0;
     text-align: center;
-    justify-items: center;
+    justify-items: stretch;
   }
   .site-footer__inner > div { width: 100%; }
+  /* первый блок (логотип) — всегда виден, по центру */
+  .site-footer__inner > div:first-child { text-align: center; padding-bottom: 28px; }
   .logo--horiz { margin: 0 auto; }
   .site-footer__cities,
   .site-footer__about { margin-left: auto; margin-right: auto; }
   .site-footer__about { max-width: 32ch; }
-  .site-footer h4 { margin-bottom: 14px; }
-  /* ссылки колонок — крупнее, по центру, с лёгкими разделителями */
-  .site-footer__inner > div:not(:first-child) {
-    border-top: 1px solid rgba(255,255,255,.07);
-    padding-top: 24px;
+
+  /* Колонки-аккордеоны: Навигация / Контакты / Документы */
+  .site-footer__inner > div.footer-col {
+    border-top: 1px solid rgba(255,255,255,.09);
+    padding: 0;
+    text-align: left;
   }
-  .site-footer div > a { display: block; padding: 7px 0; }
+  .site-footer__inner > div.footer-col h4 {
+    margin: 0;
+    padding: 18px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+  }
+  /* стрелка-индикатор */
+  .site-footer__inner > div.footer-col h4::after {
+    content: '';
+    width: 9px; height: 9px;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(45deg);
+    transition: transform .3s var(--ease);
+    margin-right: 6px;
+  }
+  .site-footer__inner > div.footer-col.is-open h4::after {
+    transform: rotate(-135deg);
+  }
+  /* список ссылок — скрыт, раскрывается по клику */
+  .site-footer__inner > div.footer-col .footer-col__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .3s var(--ease);
+  }
+  .site-footer__inner > div.footer-col.is-open .footer-col__body {
+    grid-template-rows: 1fr;
+  }
+  .site-footer__inner > div.footer-col .footer-col__body > div {
+    overflow: hidden;
+  }
+  .site-footer div.footer-col a {
+    display: block;
+    padding: 10px 4px;
+    text-align: left;
+  }
+  .site-footer div.footer-col a:last-child { padding-bottom: 18px; }
+
   .site-footer__bottom {
     flex-direction: column;
     gap: 8px;
