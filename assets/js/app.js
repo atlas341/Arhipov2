@@ -2,6 +2,61 @@
 // scrollytelling-числа, форма заявки.
 
 (function () {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // -------- Hero parallax (курсор + лёгкий скролл) --------
+  const hero = document.getElementById('hero');
+  if (hero && !prefersReduced && window.matchMedia('(pointer: fine)').matches) {
+    let raf = null, tx = 0, ty = 0;
+    const apply = () => {
+      hero.style.setProperty('--px', tx.toFixed(3));
+      hero.style.setProperty('--py', ty.toFixed(3));
+      raf = null;
+    };
+    hero.addEventListener('mousemove', (e) => {
+      const r = hero.getBoundingClientRect();
+      tx = (e.clientX - r.left) / r.width - 0.5;   // -0.5..0.5
+      ty = (e.clientY - r.top) / r.height - 0.5;
+      if (!raf) raf = requestAnimationFrame(apply);
+    });
+    hero.addEventListener('mouseleave', () => {
+      tx = 0; ty = 0;
+      if (!raf) raf = requestAnimationFrame(apply);
+    });
+  }
+
+  // -------- 3D tilt на карточках (десктоп) --------
+  if (!prefersReduced && window.matchMedia('(pointer: fine)').matches) {
+    const tiltCards = document.querySelectorAll('.why-card, .cat, .story, .infra-card');
+    tiltCards.forEach((card) => {
+      card.style.transformStyle = 'preserve-3d';
+      card.style.willChange = 'transform';
+      let raf = null, rx = 0, ry = 0, lift = 0;
+      const render = () => {
+        card.style.transform =
+          `perspective(800px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(${lift}px)`;
+        raf = null;
+      };
+      card.addEventListener('mousemove', (e) => {
+        // не наклоняем, пока карточка ещё не проявилась (reveal)
+        if (card.hasAttribute('data-reveal') && !card.classList.contains('is-revealed')) return;
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        ry = px * 9;          // наклон влево/вправо
+        rx = -py * 9;         // наклон вверх/вниз
+        lift = -6;
+        card.style.transition = 'none';   // мгновенно следуем за курсором
+        if (!raf) raf = requestAnimationFrame(render);
+      });
+      card.addEventListener('mouseleave', () => {
+        rx = 0; ry = 0; lift = 0;
+        card.style.transition = '';        // плавный возврат (CSS transition)
+        card.style.transform = '';
+      });
+    });
+  }
+
   // -------- Sticky header tint on scroll --------
   const header = document.getElementById('siteHeader');
   if (header) {
@@ -68,11 +123,11 @@
 
   // -------- Reveal on scroll for select containers --------
   const revealTargets = document.querySelectorAll(
-    '.section-head, .story, .num, .cat, .catx, .infra-card, .news-card, .charity__inner, .contact__inner, .map__stage'
+    '.section-head, .story, .why-card, .num, .cat, .catx, .pcat, .infra-card, .news-card, .charity__inner, .charity-card, .charity-stat, .contact__inner, .map__stage'
   );
   revealTargets.forEach((el, i) => {
     el.setAttribute('data-reveal', '');
-    el.style.transitionDelay = (i % 6) * 70 + 'ms';
+    el.style.transitionDelay = (i % 6) * 90 + 'ms';
   });
 
   if ('IntersectionObserver' in window) {
