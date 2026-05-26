@@ -29,29 +29,28 @@
   if (!prefersReduced && window.matchMedia('(pointer: fine)').matches) {
     const tiltCards = document.querySelectorAll('.why-card, .cat, .story, .infra-card');
     tiltCards.forEach((card) => {
-      card.style.transformStyle = 'preserve-3d';
-      card.style.willChange = 'transform';
-      let raf = null, rx = 0, ry = 0, lift = 0;
+      let ticking = false, lastE = null;
       const render = () => {
-        card.style.transform =
-          `perspective(800px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(${lift}px)`;
-        raf = null;
-      };
-      card.addEventListener('mousemove', (e) => {
-        // не наклоняем, пока карточка ещё не проявилась (reveal)
-        if (card.hasAttribute('data-reveal') && !card.classList.contains('is-revealed')) return;
+        ticking = false;
+        if (!lastE) return;
         const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        ry = px * 9;          // наклон влево/вправо
-        rx = -py * 9;         // наклон вверх/вниз
-        lift = -6;
-        card.style.transition = 'none';   // мгновенно следуем за курсором
-        if (!raf) raf = requestAnimationFrame(render);
+        const px = (lastE.clientX - r.left) / r.width - 0.5;
+        const py = (lastE.clientY - r.top) / r.height - 0.5;
+        const ry = px * 10;
+        const rx = -py * 10;
+        card.style.transform =
+          `perspective(800px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-6px)`;
+      };
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform .08s linear';
+      });
+      card.addEventListener('mousemove', (e) => {
+        lastE = e;
+        if (!ticking) { ticking = true; requestAnimationFrame(render); }
       });
       card.addEventListener('mouseleave', () => {
-        rx = 0; ry = 0; lift = 0;
-        card.style.transition = '';        // плавный возврат (CSS transition)
+        lastE = null;
+        card.style.transition = 'transform .4s cubic-bezier(.2,.8,.2,1)';
         card.style.transform = '';
       });
     });
@@ -81,11 +80,13 @@
       nav.classList.add('is-open');
       burger.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden'; // блокируем прокрутку фона
+      document.body.classList.add('menu-is-open');
     };
     const closeMenu = () => {
       nav.classList.remove('is-open');
       burger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      document.body.classList.remove('menu-is-open');
       navAnchor.parentNode.insertBefore(nav, navAnchor); // возвращаем на место
     };
 
