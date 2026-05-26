@@ -215,4 +215,47 @@
       success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   }
+  // -------- Catalog sidebar scroll-spy --------
+  const catalogNav = document.getElementById('catalogNav');
+  if (catalogNav) {
+    const navLinks = catalogNav.querySelectorAll('a[href^="#"]');
+    const sections = Array.from(navLinks).map((a) =>
+      document.querySelector(a.getAttribute('href'))
+    ).filter(Boolean);
+
+    const setActive = (id) => {
+      navLinks.forEach((a) => {
+        const active = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('is-active', active);
+      });
+      // на мобилке прокручиваем активную ссылку в видимость
+      const activeLink = catalogNav.querySelector('a.is-active');
+      if (activeLink && catalogNav.scrollWidth > catalogNav.clientWidth) {
+        activeLink.scrollIntoView({ inline: 'center', behavior: 'smooth' });
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      const spyObs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      }, { rootMargin: '-25% 0px -60% 0px' });
+      sections.forEach((s) => spyObs.observe(s));
+    }
+
+    // плавный скролл — верх секции выравнивается с верхом сайдбара (top: 90px)
+    navLinks.forEach((a) => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const section = document.querySelector(a.getAttribute('href'));
+        if (!section) return;
+        const sidebarTop = 90; // совпадает с position:sticky top сайдбара
+        const top = section.getBoundingClientRect().top + window.scrollY - sidebarTop;
+        window.scrollTo({ top, behavior: 'smooth' });
+        setActive(section.id);
+      });
+    });
+  }
+
 })();
