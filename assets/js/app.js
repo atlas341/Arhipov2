@@ -124,7 +124,7 @@
 
   // -------- Reveal on scroll for select containers --------
   const revealTargets = document.querySelectorAll(
-    '.section-head, .story, .why-card, .num, .cat, .catx, .pcat, .infra-card, .news-card, .charity__inner, .charity-card, .charity-stat, .contact__inner, .map__stage'
+    '.section-head, .story, .why-card, .num, .cat, .catx, .infra-card, .news-card, .charity__inner, .charity-card, .charity-stat, .contact__inner, .map__stage'
   );
   revealTargets.forEach((el, i) => {
     el.setAttribute('data-reveal', '');
@@ -192,6 +192,8 @@
   // -------- Smooth scroll for hash links (with header offset) --------
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
+      // ссылки в каталог-сайдбаре обрабатываются отдельно
+      if (a.closest('#catalogNav')) return;
       const id = a.getAttribute('href');
       if (!id || id === '#') return;
       const target = document.querySelector(id);
@@ -228,10 +230,13 @@
         const active = a.getAttribute('href') === '#' + id;
         a.classList.toggle('is-active', active);
       });
-      // на мобилке прокручиваем активную ссылку в видимость
+      // на мобилке центрируем активную ссылку в горизонтальной ленте
+      // используем scrollLeft вместо scrollIntoView — иначе отменяет вертикальный скролл страницы
       const activeLink = catalogNav.querySelector('a.is-active');
       if (activeLink && catalogNav.scrollWidth > catalogNav.clientWidth) {
-        activeLink.scrollIntoView({ inline: 'center', behavior: 'smooth' });
+        const navCenter = catalogNav.offsetWidth / 2;
+        const linkCenter = activeLink.offsetLeft + activeLink.offsetWidth / 2;
+        catalogNav.scrollLeft = linkCenter - navCenter;
       }
     };
 
@@ -244,15 +249,13 @@
       sections.forEach((s) => spyObs.observe(s));
     }
 
-    // плавный скролл — верх секции выравнивается с верхом сайдбара (top: 90px)
+    // плавный скролл — offset задаётся через CSS scroll-margin-top на .pcat
     navLinks.forEach((a) => {
       a.addEventListener('click', (e) => {
         e.preventDefault();
         const section = document.querySelector(a.getAttribute('href'));
         if (!section) return;
-        const sidebarTop = 90; // совпадает с position:sticky top сайдбара
-        const top = section.getBoundingClientRect().top + window.scrollY - sidebarTop;
-        window.scrollTo({ top, behavior: 'smooth' });
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         setActive(section.id);
       });
     });

@@ -2492,7 +2492,7 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   flex: 1 1 auto;
   min-width: 0;
 }
-.catalog-main .pcat { padding-left: clamp(28px, 4vw, 56px); padding-right: clamp(28px, 4vw, 56px); }
+.catalog-main .pcat { padding-left: clamp(28px, 4vw, 56px); padding-right: clamp(28px, 4vw, 56px); scroll-margin-top: 96px; }
 .catalog-main .pcat__inner { max-width: 100%; }
 
 .pcat {
@@ -2558,7 +2558,11 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   align-items: center;
 }
 .pcat__layout--reverse { grid-template-columns: 1.1fr 1fr; }
-.pcat__layout--reverse .pcat__image { order: 2; }
+/* Шахматка: явный order не зависит от порядка в HTML */
+.pcat__layout > .pcat__image          { order: 1; }
+.pcat__layout > .pcat__brands         { order: 2; }
+.pcat__layout--reverse > .pcat__image { order: 2; }
+.pcat__layout--reverse > .pcat__brands{ order: 1; }
 
 .pcat__image {
   position: relative;
@@ -2728,7 +2732,11 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .pcat__layout--reverse .pcat__image { order: 0; }
+  /* На мобилке фото всегда сверху */
+  .pcat__layout > .pcat__image,
+  .pcat__layout--reverse > .pcat__image  { order: 1; }
+  .pcat__layout > .pcat__brands,
+  .pcat__layout--reverse > .pcat__brands { order: 2; }
   .pcta__inner { grid-template-columns: 1fr; gap: 28px; }
 
   /* сайдбар → горизонтальная прокручиваемая лента, прилипает под хедером */
@@ -2770,7 +2778,7 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
     background: var(--accent);
     color: #2A1A14;
   }
-  .catalog-main .pcat { padding-left: var(--gutter); padding-right: var(--gutter); }
+  .catalog-main .pcat { padding-left: var(--gutter); padding-right: var(--gutter); scroll-margin-top: 130px; }
 }
 @media (max-width: 640px) {
   .ph__jump a { font-size: 12px; padding: 8px 14px; }
@@ -2779,4 +2787,180 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   .pcta__inner { text-align: center; }
   .pcta__lede { margin-left: auto; margin-right: auto; }
   .pcta__actions { align-items: center; }
+}
+
+/* ============================================================
+   CHARITY SLIDER (вместо .charity__stats / .charity__cards / .charity__cta)
+   ============================================================ */
+.charity__head--centered { max-width: 880px; margin-inline: auto; text-align: center; }
+.charity__head--centered .charity__text { margin-inline: auto; }
+.charity__head--centered .charity__title em {
+  font-style: normal;
+  background: linear-gradient(140deg, #C73E2D 0%, #F2A341 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.charity-slider {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.charity-slider__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 4px);
+  background: #FFFFFF;
+  border: 1px solid rgba(42,26,20,.07);
+  box-shadow:
+    0 1px 0 rgba(42,26,20,.04),
+    0 30px 60px -40px rgba(199,62,45,.35),
+    0 50px 100px -60px rgba(242,163,65,.4);
+}
+.charity-slider__track {
+  display: flex;
+  transition: transform .65s cubic-bezier(.4, 0, .2, 1);
+  will-change: transform;
+}
+.charity-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  background: #FFFFFF;
+}
+.charity-slide__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #F1ECE2;
+}
+.charity-slide__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s var(--ease, ease);
+}
+.charity-slide__media::after {
+  /* мягкий градиент справа, чтобы стык с текстом был плавным */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 70%, rgba(255,255,255,.18) 100%);
+  pointer-events: none;
+}
+.charity-slider:hover .charity-slide__media img { transform: scale(1.03); }
+
+.charity-slide__body {
+  padding: clamp(28px, 4vw, 56px) clamp(24px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+.charity-slide__chip {
+  align-self: flex-start;
+  background: rgba(242,163,65,.14);
+  color: var(--accent-dim);
+  border: 1px solid rgba(242,163,65,.35);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.charity-slide__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 4px 0 0;
+  color: var(--ink);
+}
+.charity-slide__text {
+  font-size: clamp(14.5px, 1.1vw, 16.5px);
+  line-height: 1.6;
+  color: var(--muted-strong);
+  margin: 0;
+}
+.charity-slide__hint {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--muted, #8b7e74);
+  font-style: italic;
+  opacity: .8;
+}
+
+/* Стрелки */
+.charity-slider__nav {
+  position: absolute;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.95);
+  border: 1px solid rgba(42,26,20,.08);
+  color: var(--ink);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background .2s, transform .2s, box-shadow .25s, color .2s;
+  box-shadow: 0 10px 24px -10px rgba(42,26,20,.35);
+  z-index: 2;
+}
+.charity-slider__nav:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 14px 30px -10px rgba(242,163,65,.7);
+}
+.charity-slider__nav svg { width: 22px; height: 22px; }
+.charity-slider__nav--prev { left: 16px; }
+.charity-slider__nav--next { right: 16px; }
+
+/* Точки */
+.charity-slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+.charity-slider__dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(42,26,20,.18);
+  cursor: pointer;
+  padding: 0;
+  transition: background .25s, width .35s var(--ease, ease);
+}
+.charity-slider__dots button:hover { background: rgba(242,163,65,.55); }
+.charity-slider__dots button.is-active {
+  background: var(--accent);
+  width: 28px;
+}
+
+/* Адаптив */
+@media (max-width: 860px) {
+  .charity-slide { grid-template-columns: 1fr; }
+  .charity-slide__media { aspect-ratio: 16 / 11; }
+  .charity-slider__nav { width: 40px; height: 40px; }
+  .charity-slider__nav--prev { left: 10px; }
+  .charity-slider__nav--next { right: 10px; }
+  .charity-slide__media::after { display: none; }
+}
+@media (max-width: 480px) {
+  .charity-slider__nav { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .charity-slider__track { transition: none; }
+  .charity-slide__media img { transition: none; }
+  .charity-slider:hover .charity-slide__media img { transform: none; }
 }
