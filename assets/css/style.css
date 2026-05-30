@@ -433,6 +433,20 @@ button { font-family: inherit; }
   transition: transform .5s cubic-bezier(.2,.8,.2,1);
   will-change: transform;
 }
+/* Видео-фон поверх постера .hero__grid. Картинка остаётся фолбэком,
+   пока видео грузится и для тех, кто отключил автоплей / анимации. */
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__video { display: none; }
+}
 /* дышащие световые пятна */
 .hero__glow {
   background:
@@ -2356,12 +2370,40 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 /* Hero */
 .ph {
   background:
+    /* тёмная вуаль: сильная слева, тает к центру (продукты видны), лёгкий тон на правом крае для баланса */
+    linear-gradient(95deg,
+      rgba(11,27,43,.92) 0%,
+      rgba(11,27,43,.78) 20%,
+      rgba(11,27,43,.52) 42%,
+      rgba(11,27,43,.22) 60%,
+      rgba(11,27,43,.12) 78%,
+      rgba(11,27,43,.32) 100%),
+    /* лёгкое затемнение верхней и нижней кромки — для eyebrow и якорной ленты */
+    linear-gradient(180deg,
+      rgba(11,27,43,.35) 0%, rgba(11,27,43,0) 18%,
+      rgba(11,27,43,0) 82%, rgba(11,27,43,.35) 100%),
+    /* существующие тёплые радиалы — теперь поверх фото, добавляют янтарного отсвета */
     radial-gradient(60% 60% at 80% 0%, rgba(242,163,65,.16) 0%, transparent 60%),
     radial-gradient(50% 50% at 0% 100%, rgba(199,62,45,.10) 0%, transparent 60%),
+    /* фото-фон */
+    url("../img/catalog/ph-bg.jpg") center / cover no-repeat,
     var(--bg);
   position: relative;
   padding: clamp(140px, 18vw, 220px) var(--gutter) clamp(60px, 8vw, 100px);
   overflow: hidden;
+}
+@media (max-width: 640px) {
+  /* на узких экранах текст идёт во всю ширину — поднимаем общую плотность вуали */
+  .ph {
+    background:
+      linear-gradient(180deg,
+        rgba(11,27,43,.72) 0%, rgba(11,27,43,.55) 40%,
+        rgba(11,27,43,.45) 70%, rgba(11,27,43,.70) 100%),
+      radial-gradient(60% 60% at 80% 0%, rgba(242,163,65,.14) 0%, transparent 60%),
+      radial-gradient(50% 50% at 0% 100%, rgba(199,62,45,.10) 0%, transparent 60%),
+      url("../img/catalog/ph-bg.jpg") center / cover no-repeat,
+      var(--bg);
+  }
 }
 .ph__grid {
   position: absolute;
@@ -2405,18 +2447,22 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   letter-spacing: -0.025em;
   margin: 0 0 32px;
   max-width: 16ch;
+  color: #FFFFFF;
+  text-shadow: 0 2px 24px rgba(0,0,0,.55);
 }
 .ph__title em {
   color: var(--accent);
   font-style: italic;
   font-weight: 700;
+  text-shadow: 0 2px 24px rgba(0,0,0,.65);
 }
 .ph__lede {
   max-width: 60ch;
   font-size: clamp(15px, 1.4vw, 19px);
-  color: var(--muted-strong);
+  color: rgba(255,255,255,.88);
   margin: 0 0 36px;
   line-height: 1.5;
+  text-shadow: 0 1px 10px rgba(0,0,0,.6);
 }
 .ph__jump {
   display: flex;
@@ -2425,18 +2471,20 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 }
 .ph__jump a {
   padding: 10px 18px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255,255,255,.22);
   border-radius: 999px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--muted-strong);
-  background: rgba(255,255,255,.02);
+  color: rgba(255,255,255,.85);
+  background: rgba(11,27,43,.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transition: border-color .25s, color .25s, background .25s;
 }
 .ph__jump a:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(242,163,65,.06);
+  background: rgba(242,163,65,.18);
 }
 
 /* Category section */
@@ -2968,4 +3016,52 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   .charity-slider__track { transition: none; }
   .charity-slide__media img { transition: none; }
   .charity-slider:hover .charity-slide__media img { transform: none; }
+}
+
+/* ============================================================
+   БРЕНДОВЫЙ ВОДЯНОЙ ЗНАК
+   Лёгкий тайл со слоганами и лого-маркой на кремовых секциях.
+   Сами секции сохраняют свой background — паттерн идёт сверху
+   через ::before, контент карточек поднимается на z-index: 1.
+   ============================================================ */
+.pcat,
+.stories,
+.categories,
+.infra {
+  position: relative;
+}
+.pcat::before,
+.stories::before,
+.categories::before,
+.infra::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../svg/brand-pattern.svg") 0 0 / 720px 520px repeat;
+  pointer-events: none;
+  z-index: 0;
+  /* мягкий fade сверху и снизу, чтобы стыки секций не выглядели резкими */
+  mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+/* На альтернативных секциях паттерн чуть тише — фон уже сам по себе с тоном */
+.pcat--alt::before { opacity: .65; }
+
+/* контент должен лежать поверх паттерна */
+.pcat > *,
+.stories > *,
+.categories > *,
+.infra > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  /* на мобильных тайл мельче, чтобы слоганы не уходили целиком за край */
+  .pcat::before,
+  .stories::before,
+  .categories::before,
+  .infra::before {
+    background-size: 480px 360px;
+  }
 }

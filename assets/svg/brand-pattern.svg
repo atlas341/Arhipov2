@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520">
+  <!--
+    Брендовый водяной знак для тёплых кремовых секций.
+    Тёмно-коричневый текст и лого-марка на ~5–7% непрозрачности.
+    Шрифт: Manrope (общий с сайтом). При отсутствии шрифта в SVG-контексте
+    выбирается ближайший sans-serif — на такой малой opacity разница незаметна.
+  -->
+  <defs>
+    <style>
+      .b-txt  { font-family: "Manrope", "Inter", system-ui, sans-serif; font-weight: 700; letter-spacing: 6px; fill: #2A1A14; fill-opacity: 0.055; }
+      .b-mark { fill: #2A1A14; fill-opacity: 0.07; }
+      .b-ring { fill: none; stroke: #2A1A14; stroke-opacity: 0.08; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <g transform="translate(360 260)">
+    <g transform="rotate(-22)">
+      <!-- Диагональные строки слоганов -->
+      <text class="b-txt" x="-560" y="-220" font-size="15">НАДЁЖНОСТЬ · КАЧЕСТВО · СЕВЕР · НАДЁЖНОСТЬ · КАЧЕСТВО · СЕВЕР</text>
+      <text class="b-txt" x="-560" y="-130" font-size="15">ТД АРХИПОВ М.А. · С 2008 ГОДА · ИП АРХИПОВ М.А. · С 2008 ГОДА</text>
+      <text class="b-txt" x="-560"  y="-40" font-size="15">ОТ КАЛИНИНГРАДА ДО ВЛАДИВОСТОКА · СЕВМОРПУТЬ · АРКТИКА</text>
+      <text class="b-txt" x="-560"  y="50"  font-size="15">ПОСТАВКИ ПО ВСЕЙ РОССИИ · ДОБРОСОВЕСТНЫЙ ПАРТНЁР</text>
+      <text class="b-txt" x="-560"  y="140" font-size="15">НАДЁЖНОСТЬ · КАЧЕСТВО · СЕВЕР · НАДЁЖНОСТЬ · КАЧЕСТВО · СЕВЕР</text>
+      <text class="b-txt" x="-560"  y="230" font-size="15">ТД АРХИПОВ М.А. · С 2008 ГОДА · ИП АРХИПОВ М.А. · С 2008 ГОДА</text>
+
+      <!-- Лого-марка слева вверху (компас + стрелка) -->
+      <g transform="translate(-280 -200)">
+        <circle class="b-ring" cx="0" cy="0" r="18"/>
+        <path class="b-mark" d="M0 -14 L11 12 L0 6 L-11 12 Z"/>
+      </g>
+      <!-- Лого-марка справа внизу -->
+      <g transform="translate(290 200)">
+        <circle class="b-ring" cx="0" cy="0" r="18"/>
+        <path class="b-mark" d="M0 -14 L11 12 L0 6 L-11 12 Z"/>
+      </g>
+      <!-- Координатные точки-засечки (отсылка к карте/маршрутам) -->
+      <circle class="b-mark" cx="-380"  cy="80" r="2"/>
+      <circle class="b-mark" cx="-200" cy="-90" r="2"/>
+      <circle class="b-mark" cx="140"  cy="80"  r="2"/>
+      <circle class="b-mark" cx="380"  cy="-90" r="2"/>
+    </g>
+  </g>
+</svg>
