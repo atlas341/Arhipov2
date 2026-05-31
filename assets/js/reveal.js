@@ -16,7 +16,8 @@
   const itemSelectors = [
     '.story',        // .stories
     '.why-card',     // .why
-    '.num-strip',    // .numbers (одна полоса)
+    '.num-strip',    // .numbers — основная плашка
+    '.infra-strip',  // .numbers — тёмная плашка инфраструктуры
     '.map',          // .map-section (виджет карты целиком)
   ].join(', ');
 
@@ -30,7 +31,9 @@
     items.forEach((el, idx) => el.style.setProperty('--i', String(idx + 1)));
   });
 
-  // Наблюдатель: как только секция показалась хотя бы на 15% — открываем
+  // Наблюдатель: срабатывает, когда верх секции пересечёт середину экрана.
+  // На этот момент нижняя часть секции (с карточками) уже видна — каскад
+  // играет «на глазах», а не «за кадром».
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
@@ -40,7 +43,7 @@
         }
       });
     },
-    { threshold: 0.15 }
+    { rootMargin: '0px 0px -45% 0px', threshold: 0 }
   );
   sections.forEach((sec) => io.observe(sec));
 })();
