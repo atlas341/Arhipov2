@@ -3005,3 +3005,36 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   .charity-slider:hover .charity-slide__media img { transform: none; }
 }
 
+
+/* ============================================================
+   HERO — мобильные правки
+   Сдвигаем фото на логотип, усиливаем затемнение, ghost-кнопку
+   делаем заметнее на ярком фоне.
+   ============================================================ */
+@media (max-width: 768px) {
+  /* фото смещаем к правой части — там большой логотип АРХИПОВ М.А. на контейнере */
+  .hero__grid {
+    background-position: 78% center;
+  }
+  /* текст на мобилке идёт во всю ширину — тёмная зона должна быть равномерной по всему герою */
+  .hero::before {
+    background:
+      /* плотное центральное затемнение под текст */
+      radial-gradient(ellipse 120% 100% at 50% 45%, rgba(0,0,0,.72) 0%, rgba(0,0,0,.58) 55%, rgba(0,0,0,.45) 85%, rgba(0,0,0,.40) 100%),
+      /* нижняя полоса под кнопками и слоганом */
+      linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55) 100%),
+      /* мягкий тёплый отсвет */
+      radial-gradient(80% 60% at 50% 30%, rgba(199,62,45,.10) 0%, transparent 70%);
+  }
+  /* ghost-кнопка на ярком фото плохо читалась — даём тёмную плашку и плотный край */
+  .hero .btn--ghost {
+    background: rgba(15,10,8,.55);
+    border-color: rgba(255,255,255,.40);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .hero .btn--ghost:hover {
+    background: rgba(15,10,8,.75);
+    border-color: rgba(255,255,255,.60);
+  }
+}
