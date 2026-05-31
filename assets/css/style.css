@@ -3038,3 +3038,101 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
     border-color: rgba(255,255,255,.60);
   }
 }
+
+/* ============================================================
+   ФОТО-ФОНЫ СЕКЦИЙ
+   .why и .numbers получают фотографию + тёмную вуаль для
+   читаемости заголовка. Карточки внутри остаются прежними —
+   они «плавают» белыми/кремовыми плашками поверх фото.
+   ============================================================ */
+
+/* — Почему мы — */
+.why {
+  background:
+    linear-gradient(180deg,
+      rgba(8,5,3,.70) 0%,
+      rgba(8,5,3,.40) 22%,
+      rgba(8,5,3,.30) 50%,
+      rgba(8,5,3,.45) 80%,
+      rgba(8,5,3,.65) 100%),
+    url("../img/sections/why.jpg") center / cover no-repeat;
+  color: var(--paper-on-dark);
+}
+.why .section-head__num    { color: var(--accent); }
+.why .section-head__title  { color: var(--paper-on-dark); text-shadow: 0 2px 14px rgba(0,0,0,.55); }
+.why .section-head__lede   { color: rgba(255,255,255,.88); text-shadow: 0 1px 6px rgba(0,0,0,.55); }
+/* существующие радиалы .why__bg остаются — они теперь тёплый отсвет поверх фото */
+.why-card { box-shadow: 0 14px 38px -14px rgba(0,0,0,.4); }
+
+/* — Компания в цифрах — */
+.numbers {
+  background:
+    linear-gradient(180deg,
+      rgba(8,5,3,.55) 0%,
+      rgba(8,5,3,.32) 28%,
+      rgba(8,5,3,.32) 72%,
+      rgba(8,5,3,.55) 100%),
+    url("../img/sections/numbers.jpg") center / cover no-repeat;
+  color: var(--paper-on-dark);
+}
+.numbers .section-head__num   { color: var(--accent); }
+.numbers .section-head__title { color: var(--paper-on-dark); text-shadow: 0 2px 14px rgba(0,0,0,.55); }
+.numbers .section-head__lede  { color: rgba(255,255,255,.88); text-shadow: 0 1px 6px rgba(0,0,0,.55); }
+/* num-strip приподнимаем тенью, чтобы оторвать от фото */
+.numbers .num-strip { box-shadow: 0 30px 60px -28px rgba(0,0,0,.55); }
+
+/* ============================================================
+   STACKING SCROLL WITH DEPTH (как у orakl-oncology.com)
+   stories → why → numbers → map наезжают друг на друга.
+   Сжатие и затемнение управляется JS через CSS-переменные.
+   Включено только на десктопе.
+   ============================================================ */
+@media (min-width: 1024px) {
+  .section-stack > section {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    transform-origin: center top;
+    transform: scale(var(--stack-scale, 1));
+    filter: brightness(var(--stack-dim, 1)) saturate(var(--stack-sat, 1));
+    will-change: transform, filter;
+  }
+  /* Гарантия, что каждая секция стека лежит выше предыдущей */
+  .section-stack > section:nth-child(1) { z-index: 1; }
+  .section-stack > section:nth-child(2) { z-index: 2; }
+  .section-stack > section:nth-child(3) { z-index: 3; }
+  .section-stack > section:nth-child(4) { z-index: 4; }
+}
+
+/* На узких экранах — обычный поток, без стека */
+@media (max-width: 1023.98px) {
+  .section-stack > section { position: static; min-height: 0; }
+}
+
+/* ============================================================
+   REVEAL-ON-ENTER (вариант A для stack-секций)
+   До показа секции — заголовок и карточки невидимы и сдвинуты вниз.
+   После появления — каскадом проявляются (фон секции виден сразу).
+   Включается только когда JS добавил .has-reveal на .section-stack.
+   ============================================================ */
+.section-stack.has-reveal > section .section-head,
+.section-stack.has-reveal > section .story,
+.section-stack.has-reveal > section .why-card,
+.section-stack.has-reveal > section .num-strip,
+.section-stack.has-reveal > section .map {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity .7s cubic-bezier(.2,.6,.2,1),
+    transform .7s cubic-bezier(.2,.6,.2,1);
+  transition-delay: calc(.12s + var(--i, 0) * .07s);
+  will-change: opacity, transform;
+}
+.section-stack.has-reveal > section.is-revealed .section-head,
+.section-stack.has-reveal > section.is-revealed .story,
+.section-stack.has-reveal > section.is-revealed .why-card,
+.section-stack.has-reveal > section.is-revealed .num-strip,
+.section-stack.has-reveal > section.is-revealed .map {
+  opacity: 1;
+  transform: none;
+}

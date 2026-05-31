@@ -157,6 +157,9 @@
   </section>
 
   <!-- ===================== STORIES ===================== -->
+
+  <!-- ============== SCROLL STACK ============== -->
+  <div class="section-stack">
   <section class="stories" id="stories">
     <header class="section-head">
       <span class="section-head__num">01</span>
@@ -218,49 +221,6 @@
     </div>
   </section>
 
-   <!-- ===================== MAP ===================== -->
-  <section class="map-section" id="map">
-      <header class="section-head section-head--light">
-        <span class="section-head__num">04</span>
-        <h2 class="section-head__title">География поставок</h2>
-        <p class="section-head__lede">20+ филиалов и&nbsp;представительств. Маршруты — морем, железной&nbsp;дорогой, авиа и&nbsp;автотранспортом. Переключайте режимы — линии перерисовываются.</p>
-      </header>
-
-      <div class="map">
-        <div class="map__controls" role="tablist" aria-label="Тип транспорта">
-          <button class="map__mode is-active" data-mode="all" role="tab" aria-selected="true">
-            <span class="map__mode-icon">●</span> Все маршруты
-          </button>
-          <button class="map__mode" data-mode="sea" role="tab" aria-selected="false">
-            <span class="map__mode-icon">~</span> Морем
-          </button>
-          <button class="map__mode" data-mode="rail" role="tab" aria-selected="false">
-            <span class="map__mode-icon">⫶</span> ЖД
-          </button>
-          <button class="map__mode" data-mode="air" role="tab" aria-selected="false">
-            <span class="map__mode-icon">^</span> Авиа
-          </button>
-          <button class="map__mode" data-mode="road" role="tab" aria-selected="false">
-            <span class="map__mode-icon">▭</span> Автотранспортом
-          </button>
-        </div>
-
-        <div class="map__stage">
-          <div class="map__svg-wrap" id="mapSvgWrap" aria-label="Карта России с филиалами"></div>
-          <aside class="map__panel" id="mapPanel" aria-live="polite">
-            <p class="map__panel-hint">Наведите курсор на&nbsp;точку — увидите карточку филиала.</p>
-          </aside>
-        </div>
-
-        <div class="map__legend">
-          <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--hq"></i> Головной офис</span>
-          <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--warehouse"></i> Склад</span>
-          <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--office"></i> Представительство</span>
-          <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--dest"></i> Точка доставки</span>
-        </div>
-      </div>
-    </section>
-  <!-- ===================== WHY US ===================== -->
   <section class="why" id="why">
     <div class="why__bg" aria-hidden="true"></div>
     <header class="section-head section-head--on-light">
@@ -326,7 +286,106 @@
     </div>
   </section>
 
-   <!-- ===================== CATEGORIES ===================== -->
+  <section class="numbers" id="numbers">
+    <span class="brand-watermark brand-watermark--bl" aria-hidden="true"></span>
+    <header class="section-head">
+      <span class="section-head__num">03</span>
+      <h2 class="section-head__title">Компания в&nbsp;цифрах</h2>
+      <p class="section-head__lede">Масштаб без длинных абзацев.</p>
+    </header>
+
+    <!-- горизонтальная полоса ключевых цифр -->
+    <div class="num-strip">
+      <div class="num-strip__item">
+        <span class="num-strip__value" data-count-to="20" data-suffix="+">0</span>
+        <span class="num-strip__label">филиалов</span>
+      </div>
+      <div class="num-strip__sep" aria-hidden="true"></div>
+      <div class="num-strip__item">
+        <span class="num-strip__value" data-count-to="450" data-suffix="+">0</span>
+        <span class="num-strip__label">сотрудников</span>
+      </div>
+      <div class="num-strip__sep" aria-hidden="true"></div>
+      <div class="num-strip__item">
+        <span class="num-strip__value" data-count-to="6000" data-suffix="+">0</span>
+        <span class="num-strip__label">Наименовий</span>
+      </div>
+      <div class="num-strip__sep" aria-hidden="true"></div>
+      <div class="num-strip__item">
+        <span class="num-strip__value" data-count-to="9" data-suffix=" млрд">0</span>
+        <span class="num-strip__label">годовой оборот</span>
+      </div>
+    </div>
+
+    <!-- тёмная плашка инфраструктуры -->
+    <div class="infra-strip">
+      <div class="infra-strip__item">
+        <span class="infra-strip__num">100 000+ <em>м²</em></span>
+        <span class="infra-strip__title">Территория складов</span>
+        <span class="infra-strip__desc">Холодильные и&nbsp;сухие площади в&nbsp;13&nbsp;регионах</span>
+      </div>
+      <div class="infra-strip__item">
+        <span class="infra-strip__num">3 500 +</span>
+        <span class="infra-strip__title">Торговых точек</span>
+        <span class="infra-strip__desc">Сети, опт, HoReCa и&nbsp;госучреждения</span>
+      </div>
+      <div class="infra-strip__item">
+        <span class="infra-strip__num">50+ <em>машин</em></span>
+        <span class="infra-strip__title">Автопарк</span>
+        <span class="infra-strip__desc">Рефрижераторы и&nbsp;сухогрузный транспорт</span>
+      </div>
+      <div class="infra-strip__item">
+        <span class="infra-strip__num">40+ <em>чел.</em></span>
+        <span class="infra-strip__title">Торгпредов на&nbsp;местах</span>
+        <span class="infra-strip__desc">В&nbsp;каждом ключевом регионе</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section" id="map">
+      <header class="section-head section-head--light">
+        <span class="section-head__num">04</span>
+        <h2 class="section-head__title">География поставок</h2>
+        <p class="section-head__lede">20+ филиалов и&nbsp;представительств. Маршруты — морем, железной&nbsp;дорогой, авиа и&nbsp;автотранспортом. Переключайте режимы — линии перерисовываются.</p>
+      </header>
+
+      <div class="map">
+        <div class="map__controls" role="tablist" aria-label="Тип транспорта">
+          <button class="map__mode is-active" data-mode="all" role="tab" aria-selected="true">
+            <span class="map__mode-icon">●</span> Все маршруты
+          </button>
+          <button class="map__mode" data-mode="sea" role="tab" aria-selected="false">
+            <span class="map__mode-icon">~</span> Морем
+          </button>
+          <button class="map__mode" data-mode="rail" role="tab" aria-selected="false">
+            <span class="map__mode-icon">⫶</span> ЖД
+          </button>
+          <button class="map__mode" data-mode="air" role="tab" aria-selected="false">
+            <span class="map__mode-icon">^</span> Авиа
+          </button>
+          <button class="map__mode" data-mode="road" role="tab" aria-selected="false">
+            <span class="map__mode-icon">▭</span> Автотранспортом
+          </button>
+        </div>
+
+        <div class="map__stage">
+          <div class="map__svg-wrap" id="mapSvgWrap" aria-label="Карта России с филиалами"></div>
+          <aside class="map__panel" id="mapPanel" aria-live="polite">
+            <p class="map__panel-hint">Наведите курсор на&nbsp;точку — увидите карточку филиала.</p>
+          </aside>
+        </div>
+
+        <div class="map__legend">
+          <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--hq"></i> Головной офис</span>
+          <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--warehouse"></i> Склад</span>
+          <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--office"></i> Представительство</span>
+          <span class="map__legend-item"><i class="map__legend-dot map__legend-dot--dest"></i> Точка доставки</span>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- ============ END SCROLL STACK ============ -->
+
   <section class="categories" id="categories">
     <header class="section-head">
       <span class="section-head__num">05</span>
@@ -500,62 +559,6 @@
     </div>
   </section>
 
-  <!-- ===================== NUMBERS + INFRASTRUCTURE ===================== -->
-  <section class="numbers" id="numbers">
-    <span class="brand-watermark brand-watermark--bl" aria-hidden="true"></span>
-    <header class="section-head">
-      <span class="section-head__num">03</span>
-      <h2 class="section-head__title">Компания в&nbsp;цифрах</h2>
-      <p class="section-head__lede">Масштаб без длинных абзацев.</p>
-    </header>
-
-    <!-- горизонтальная полоса ключевых цифр -->
-    <div class="num-strip">
-      <div class="num-strip__item">
-        <span class="num-strip__value" data-count-to="20" data-suffix="+">0</span>
-        <span class="num-strip__label">филиалов</span>
-      </div>
-      <div class="num-strip__sep" aria-hidden="true"></div>
-      <div class="num-strip__item">
-        <span class="num-strip__value" data-count-to="450" data-suffix="+">0</span>
-        <span class="num-strip__label">сотрудников</span>
-      </div>
-      <div class="num-strip__sep" aria-hidden="true"></div>
-      <div class="num-strip__item">
-        <span class="num-strip__value" data-count-to="6000" data-suffix="+">0</span>
-        <span class="num-strip__label">Наименовий</span>
-      </div>
-      <div class="num-strip__sep" aria-hidden="true"></div>
-      <div class="num-strip__item">
-        <span class="num-strip__value" data-count-to="9" data-suffix=" млрд">0</span>
-        <span class="num-strip__label">годовой оборот</span>
-      </div>
-    </div>
-
-    <!-- тёмная плашка инфраструктуры -->
-    <div class="infra-strip">
-      <div class="infra-strip__item">
-        <span class="infra-strip__num">100 000+ <em>м²</em></span>
-        <span class="infra-strip__title">Территория складов</span>
-        <span class="infra-strip__desc">Холодильные и&nbsp;сухие площади в&nbsp;13&nbsp;регионах</span>
-      </div>
-      <div class="infra-strip__item">
-        <span class="infra-strip__num">3 500 +</span>
-        <span class="infra-strip__title">Торговых точек</span>
-        <span class="infra-strip__desc">Сети, опт, HoReCa и&nbsp;госучреждения</span>
-      </div>
-      <div class="infra-strip__item">
-        <span class="infra-strip__num">50+ <em>машин</em></span>
-        <span class="infra-strip__title">Автопарк</span>
-        <span class="infra-strip__desc">Рефрижераторы и&nbsp;сухогрузный транспорт</span>
-      </div>
-      <div class="infra-strip__item">
-        <span class="infra-strip__num">40+ <em>чел.</em></span>
-        <span class="infra-strip__title">Торгпредов на&nbsp;местах</span>
-        <span class="infra-strip__desc">В&nbsp;каждом ключевом регионе</span>
-      </div>
-    </div>
-  </section>
 
  
   
@@ -871,5 +874,7 @@
   <script src="assets/js/map.js"></script>
   <script src="assets/js/news.js"></script>
   <script src="assets/js/charity.js"></script>
+  <script src="assets/js/stack.js"></script>
+  <script src="assets/js/reveal.js"></script>
 </body>
 </html>
