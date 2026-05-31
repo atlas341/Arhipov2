@@ -324,7 +324,6 @@ button { font-family: inherit; }
   object-fit: contain;
   display: block;
 }
-.logo--footer .logo__img { width: 46px; height: 46px; }
 .logo span {
   display: flex;
   flex-direction: column;
@@ -412,9 +411,15 @@ button { font-family: inherit; }
   content: '';
   position: absolute; inset: 0; z-index: -1;
   background:
-    radial-gradient(70% 60% at 18% 40%, rgba(199,62,45,.22) 0%, transparent 60%),
-    radial-gradient(60% 60% at 85% 80%, rgba(242,163,65,.16) 0%, transparent 60%),
-    linear-gradient(90deg, rgba(20,12,9,.78) 0%, rgba(20,12,9,.45) 45%, rgba(20,12,9,.15) 100%);
+    /* эллиптическое тёмное пятно слева — там, где живёт весь текст и кнопки */
+    radial-gradient(ellipse 85% 95% at 22% 50%, rgba(0,0,0,.78) 0%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.30) 60%, rgba(0,0,0,.05) 85%, transparent 100%),
+    /* тёплые акценты (приглушённые, чтобы не размывать чёрный) */
+    radial-gradient(70% 60% at 18% 40%, rgba(199,62,45,.16) 0%, transparent 60%),
+    radial-gradient(60% 60% at 85% 80%, rgba(242,163,65,.12) 0%, transparent 60%),
+    /* нижняя горизонтальная полоса тьмы — под lede и слоганом */
+    linear-gradient(180deg, transparent 55%, rgba(8,5,3,.55) 100%),
+    /* базовое лёгкое равномерное затемнение по всему герою */
+    linear-gradient(180deg, rgba(8,5,3,.22) 0%, rgba(8,5,3,.22) 100%);
   pointer-events: none;
 }
 
@@ -427,25 +432,11 @@ button { font-family: inherit; }
   z-index: -1;
 }
 .hero__grid {
-  background: url("../../image.png") center / cover no-repeat;
+  background: url("../img/hero/trucks.jpg") center / cover no-repeat;
   /* параллакс: JS меняет --px/--py, фон плавно смещается за курсором */
   transform: translate3d(calc(var(--px, 0) * -18px), calc(var(--py, 0) * -18px), 0) scale(1.06);
   transition: transform .5s cubic-bezier(.2,.8,.2,1);
   will-change: transform;
-}
-/* Видео-фон поверх постера .hero__grid. Картинка остаётся фолбэком,
-   пока видео грузится и для тех, кто отключил автоплей / анимации. */
-.hero__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__video { display: none; }
 }
 /* дышащие световые пятна */
 .hero__glow {
@@ -500,6 +491,9 @@ button { font-family: inherit; }
   letter-spacing: -0.025em;
   margin: 0 0 36px;
   max-width: 14ch;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.85),
+    0 4px 28px rgba(0,0,0,.75);
 }
 .hero__title-line { display: block; }
 .hero__title-line--accent {
@@ -510,9 +504,12 @@ button { font-family: inherit; }
 .hero__lede {
   max-width: 56ch;
   font-size: clamp(15px, 1.4vw, 19px);
-  color: var(--muted-on-dark);
+  color: rgba(255,255,255,.95);
   margin: 0 0 40px;
   line-height: 1.5;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,.85),
+    0 2px 14px rgba(0,0,0,.75);
 }
 
 .hero__cta-row {
@@ -528,6 +525,9 @@ button { font-family: inherit; }
   font-style: italic;
   color: var(--accent);
   letter-spacing: .01em;
+  text-shadow:
+    0 1px 3px rgba(0,0,0,.85),
+    0 2px 16px rgba(0,0,0,.75);
 }
 
 /* ticker */
@@ -2012,26 +2012,13 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 .site-footer div > a:hover { color: #fff; }
 .logo--footer { color: var(--paper-on-dark); }
 .logo--footer:hover { color: var(--paper-on-dark); }
-
-/* Горизонтальный логотип в футере — на лёгкой светлой плашке,
-   чтобы фирменный тёмно-красный текст логотипа читался на тёмном фоне */
-.logo--horiz {
-  display: inline-flex;
-  padding: 16px 22px;
-  background: #FBF3EA;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.28);
-  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+.logo--footer .logo__img {
+  width: 120px;
+  height: 120px;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,.35));
+  transition: transform .25s var(--ease);
 }
-.logo--horiz:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 38px rgba(0,0,0,.34);
-}
-.logo__horiz-img {
-  width: clamp(190px, 22vw, 240px);
-  height: auto;
-  display: block;
-}
+.logo--footer:hover .logo__img { transform: translateY(-2px) scale(1.02); }
 .site-footer__cities {
   margin: 14px 0 0;
   color: var(--muted-on-dark);
@@ -2204,7 +2191,7 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   .site-footer__inner > div { width: 100%; }
   /* первый блок (логотип) — всегда виден, по центру */
   .site-footer__inner > div:first-child { text-align: center; padding-bottom: 28px; }
-  .logo--horiz { margin: 0 auto; }
+  .logo--footer { margin: 0 auto; }
   .site-footer__cities,
   .site-footer__about { margin-left: auto; margin-right: auto; }
   .site-footer__about { max-width: 32ch; }
@@ -3018,50 +3005,3 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   .charity-slider:hover .charity-slide__media img { transform: none; }
 }
 
-/* ============================================================
-   БРЕНДОВЫЙ ВОДЯНОЙ ЗНАК
-   Лёгкий тайл со слоганами и лого-маркой на кремовых секциях.
-   Сами секции сохраняют свой background — паттерн идёт сверху
-   через ::before, контент карточек поднимается на z-index: 1.
-   ============================================================ */
-.pcat,
-.stories,
-.categories,
-.infra {
-  position: relative;
-}
-.pcat::before,
-.stories::before,
-.categories::before,
-.infra::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("../svg/brand-pattern.svg") 0 0 / 720px 520px repeat;
-  pointer-events: none;
-  z-index: 0;
-  /* мягкий fade сверху и снизу, чтобы стыки секций не выглядели резкими */
-  mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-}
-/* На альтернативных секциях паттерн чуть тише — фон уже сам по себе с тоном */
-.pcat--alt::before { opacity: .65; }
-
-/* контент должен лежать поверх паттерна */
-.pcat > *,
-.stories > *,
-.categories > *,
-.infra > * {
-  position: relative;
-  z-index: 1;
-}
-
-@media (max-width: 640px) {
-  /* на мобильных тайл мельче, чтобы слоганы не уходили целиком за край */
-  .pcat::before,
-  .stories::before,
-  .categories::before,
-  .infra::before {
-    background-size: 480px 360px;
-  }
-}
