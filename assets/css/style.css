@@ -1259,7 +1259,11 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
    PARTNERS (marquee)
    ============================================================ */
 
-.partners { background: var(--bg-alt); position: relative; }
+.partners {
+  background: var(--bg-alt);
+  position: relative;
+  padding-bottom: clamp(40px, 6vw, 80px);
+}
 .partners::before, .partners::after {
   content: '';
   position: absolute;
@@ -1270,36 +1274,116 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
 .partners::before { top: 0; }
 .partners::after { bottom: 0; }
 
-.marquee {
-  overflow: hidden;
-  padding: 14px 0;
-  border-top: 1px solid var(--line);
-  background: var(--bg);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+/* ===== СОВРЕМЕННАЯ БЕГУЩАЯ СТРОКА ПАРТНЁРОВ =====
+   Три строки с лейблами слева, плавным масочным затуханием по краям,
+   разной скоростью прокрутки и hover-паузой. */
+.partners-rows {
+  margin-top: clamp(40px, 6vw, 64px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.marquee + .marquee { border-top: 1px solid var(--line); }
-.marquee__track {
+.partners-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(160px, 18vw, 220px) 1fr;
+  gap: clamp(16px, 3vw, 32px);
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+.partners-row:last-child { border-bottom: 1px solid var(--line); }
+
+.partners-row__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+  padding-left: var(--gutter);
+}
+.partners-row__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  position: relative;
+}
+.partners-row__dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: .35;
+  animation: partners-pulse 2.4s ease-in-out infinite;
+}
+@keyframes partners-pulse {
+  0%, 100% { transform: scale(1);   opacity: .35; }
+  50%      { transform: scale(1.6); opacity: 0;   }
+}
+.partners-row__count {
+  margin-left: auto;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.partners-row__viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 92%, transparent 100%);
+  padding-right: var(--gutter);
+}
+.partners-row__track {
   display: inline-flex;
-  gap: 56px;
+  align-items: center;
+  gap: clamp(28px, 3.4vw, 48px);
   white-space: nowrap;
-  animation: marquee-scroll 38s linear infinite;
+  animation: partners-scroll var(--speed, 50s) linear infinite;
   will-change: transform;
 }
-.marquee--reverse .marquee__track {
-  animation-direction: reverse;
-}
-.marquee__track span {
+.partners-row--reverse .partners-row__track { animation-direction: reverse; }
+.partners-row:hover .partners-row__track    { animation-play-state: paused; }
+
+.partners-row__item {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(22px, 2.5vw, 38px);
+  font-weight: 500;
+  font-size: clamp(20px, 2vw, 30px);
   letter-spacing: -0.01em;
-  color: var(--muted);
-  transition: color .25s;
+  color: var(--ink);
+  opacity: .82;
+  transition: opacity .25s, color .25s;
+  cursor: default;
 }
-.marquee__track span:hover { color: var(--accent-red); }
-@keyframes marquee-scroll {
+.partners-row__item:hover {
+  opacity: 1;
+  color: var(--accent-red);
+}
+.partners-row__sep {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: .55;
+  flex-shrink: 0;
+}
+@keyframes partners-scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Мобильная адаптация: лейбл переезжает над строкой */
+@media (max-width: 768px) {
+  .partners-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 14px 0;
+  }
+  .partners-row__head { padding-left: var(--gutter); }
+  .partners-row__viewport { padding-right: 0; }
 }
 
 /* ============================================================
@@ -3225,4 +3309,105 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   }
   .team-slider-arrow--prev { left: 8px; }
   .team-slider-arrow--next { right: 8px; }
+}
+
+/* ============================================================
+   LEGAL PAGE — типографика для политики и подобных документов
+   ============================================================ */
+.legal {
+  background: var(--bg);
+  color: var(--ink);
+  padding: clamp(80px, 10vw, 140px) var(--gutter) clamp(60px, 8vw, 100px);
+  min-height: 60vh;
+}
+.legal__inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.legal__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: var(--muted-strong);
+  font-size: 14px;
+  letter-spacing: .01em;
+  transition: color .25s, transform .25s;
+}
+.legal__back:hover {
+  color: var(--accent);
+  transform: translateX(-2px);
+}
+.legal h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.legal__updated {
+  color: var(--muted-strong);
+  font-size: 14px;
+  margin: 0 0 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+}
+.legal h2 {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 44px 0 14px;
+  color: var(--ink);
+}
+.legal h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 24px 0 8px;
+  color: var(--ink);
+}
+.legal p {
+  margin: 0 0 14px;
+  line-height: 1.65;
+  color: var(--ink);
+  font-size: 15px;
+}
+.legal ul,
+.legal ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+  line-height: 1.65;
+  color: var(--ink);
+  font-size: 15px;
+}
+.legal li { margin: 4px 0; }
+.legal strong { color: var(--ink); font-weight: 700; }
+.legal a {
+  color: var(--accent-red);
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+  transition: color .2s;
+}
+.legal a:hover { color: var(--accent); }
+
+/* Плейсхолдеры — жёлтая подсветка, чтобы юристу было видно, что заполнить */
+.legal mark.fill {
+  background: rgba(242,163,65,.25);
+  color: var(--ink);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+  font-style: italic;
+  font-size: .92em;
+  border: 1px dashed rgba(242,163,65,.6);
+}
+
+.legal__signature {
+  margin: 60px 0 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  color: var(--muted-strong);
+  font-size: 14px;
+  line-height: 1.7;
 }
