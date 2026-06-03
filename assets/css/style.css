@@ -319,28 +319,40 @@ button { font-family: inherit; }
   flex-shrink: 0;
 }
 .logo__img {
-  width: 44px; height: 44px;
+  width: 56px; height: 56px;
   flex-shrink: 0;
   object-fit: contain;
   display: block;
 }
+/* Горизонтальный логотип-баннер в шапке — заменяет круглый+текст */
+.logo__img-h {
+  width: auto;
+  height: clamp(40px, 4vw, 52px);
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+}
 .logo span {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  align-items: center;
+  line-height: 1.15;
+  text-align: center;
 }
 .logo strong {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
   letter-spacing: .02em;
 }
 .logo em {
   font-style: normal;
-  font-size: 11px;
-  color: var(--muted-on-dark);
-  letter-spacing: .04em;
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: .14em;
   text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 2px;
 }
 
 .site-header__nav {
@@ -352,11 +364,11 @@ button { font-family: inherit; }
 .site-header__nav a {
   font-size: 14px;
   font-weight: 500;
-  color: var(--muted-on-dark);
+  color: #FFFFFF;
   position: relative;
   padding: 8px 0;
 }
-.site-header__nav a:hover { color: #fff; }
+.site-header__nav a:hover { color: var(--accent); }
 .site-header__nav a::after {
   content: '';
   position: absolute;
@@ -504,12 +516,21 @@ button { font-family: inherit; }
 .hero__lede {
   max-width: 56ch;
   font-size: clamp(15px, 1.4vw, 19px);
-  color: rgba(255,255,255,.95);
+  color: #FFFFFF;
+  font-weight: 500;
   margin: 0 0 40px;
-  line-height: 1.5;
+  line-height: 1.55;
+  /* тёмная полупрозрачная подложка с блюром — текст читается на любом фоне */
+  background: rgba(8, 5, 3, 0.55);
+  padding: 14px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.08);
+  display: inline-block;
   text-shadow:
-    0 1px 2px rgba(0,0,0,.85),
-    0 2px 14px rgba(0,0,0,.75);
+    0 1px 2px rgba(0,0,0,.6),
+    0 2px 12px rgba(0,0,0,.5);
 }
 
 .hero__cta-row {
@@ -2022,6 +2043,64 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   line-height: 1.4;
 }
 .field--actions small a { color: var(--muted-strong); border-bottom: 1px dashed var(--muted); }
+
+/* Чекбокс согласия — обязательная галочка под формой */
+.field--checkbox {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+.field--checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255,255,255,.35);
+  border-radius: 5px;
+  background: rgba(255,255,255,.06);
+  cursor: pointer;
+  position: relative;
+  transition: all .2s;
+}
+.field--checkbox input[type="checkbox"]:hover {
+  border-color: var(--accent-red);
+}
+.field--checkbox input[type="checkbox"]:checked {
+  background: var(--accent-red);
+  border-color: var(--accent-red);
+}
+.field--checkbox input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.field--checkbox input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.field--checkbox > span {
+  color: var(--muted-on-dark);
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.field--checkbox a {
+  color: var(--paper-on-dark);
+  border-bottom: 1px dashed var(--muted);
+  transition: color .2s;
+}
+.field--checkbox a:hover { color: var(--accent); }
 .field > span {
   color: var(--muted-on-dark);
   font-size: 12px;
@@ -2053,6 +2132,11 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   padding: 14px 18px;
   margin: 0;
   font-size: 14px;
+}
+.contact__success--error {
+  background: rgba(228,98,94,.12);
+  color: #FFA59E;
+  border-color: rgba(228,98,94,.45);
 }
 
 /* ============================================================
@@ -3112,9 +3196,11 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
    делаем заметнее на ярком фоне.
    ============================================================ */
 @media (max-width: 768px) {
-  /* фото смещаем к правой части — там большой логотип АРХИПОВ М.А. на контейнере */
+  /* На мобилке грузим узкий кроп — он уже отцентрирован на фуре с большим логотипом.
+     Файл ~160 КБ вместо 2.2 МБ — загружается в 14 раз быстрее. */
   .hero__grid {
-    background-position: 78% center;
+    background-image: url("../img/hero/trucks-mobile.jpg");
+    background-position: center;
   }
   /* текст на мобилке идёт во всю ширину — тёмная зона должна быть равномерной по всему герою */
   .hero::before {
@@ -3136,6 +3222,28 @@ section { padding: clamp(80px, 12vw, 160px) var(--gutter); position: relative; }
   .hero .btn--ghost:hover {
     background: rgba(15,10,8,.75);
     border-color: rgba(255,255,255,.60);
+  }
+
+  /* Мобильные кропы фоновых фото для секций — узкие 9:14,
+     центрированы на главных объектах. ~180 КБ вместо 600-700 КБ. */
+  .why {
+    background:
+      linear-gradient(180deg,
+        rgba(8,5,3,.70) 0%,
+        rgba(8,5,3,.40) 22%,
+        rgba(8,5,3,.30) 50%,
+        rgba(8,5,3,.45) 80%,
+        rgba(8,5,3,.65) 100%),
+      url("../img/sections/why-mobile.jpg") center / cover no-repeat;
+  }
+  .numbers {
+    background:
+      linear-gradient(180deg,
+        rgba(8,5,3,.55) 0%,
+        rgba(8,5,3,.32) 28%,
+        rgba(8,5,3,.32) 72%,
+        rgba(8,5,3,.55) 100%),
+      url("../img/sections/numbers-mobile.jpg") center / cover no-repeat;
   }
 }
 

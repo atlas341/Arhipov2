@@ -1,0 +1,5 @@
+# Защита чувствительных файлов от прямого открытия из браузера
+<FilesMatch "^(config\.php|form-log\.txt|\.htaccess)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>

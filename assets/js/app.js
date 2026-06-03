@@ -209,12 +209,54 @@
   const form = document.getElementById('contactForm');
   const success = document.getElementById('contactSuccess');
   if (form && success) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      // Простой visual feedback. Подключение к backend — позже.
-      success.hidden = false;
-      form.querySelectorAll('input, textarea').forEach((el) => (el.value = ''));
-      success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      // Базовая клиентская валидация: HTML5 (required, pattern) + чекбокс
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем…';
+      }
+
+      // Прячем прошлый success/error, если были
+      success.hidden = true;
+      success.classList.remove('contact__success--error');
+
+      try {
+        const formData = new FormData(form);
+        const res = await fetch('send.php', { method: 'POST', body: formData });
+        const data = await res.json().catch(() => ({ ok: false, error: 'Ошибка ответа сервера' }));
+
+        if (res.ok && data.ok) {
+          success.textContent = 'Спасибо! Заявка принята.';
+          success.hidden = false;
+          form.querySelectorAll('input, textarea').forEach((el) => {
+            if (el.type === 'checkbox') el.checked = false;
+            else el.value = '';
+          });
+        } else {
+          success.textContent = data.error || 'Не удалось отправить. Попробуйте ещё раз или позвоните нам.';
+          success.classList.add('contact__success--error');
+          success.hidden = false;
+        }
+      } catch (err) {
+        success.textContent = 'Нет связи с сервером. Попробуйте позже или позвоните +7 (812) 450-00-94.';
+        success.classList.add('contact__success--error');
+        success.hidden = false;
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     });
   }
   // -------- Catalog sidebar scroll-spy --------
