@@ -1,5 +1,4 @@
 // Preloader: shows 3 words "Надёжность • Качество • Север", then hides.
-// Total duration 4.5s — synced with progress bar and truck animation (CSS).
 (function () {
   const preloader = document.getElementById('preloader');
   if (!preloader) return;
@@ -7,8 +6,7 @@
   // Block scrolling while preloader is up.
   document.body.classList.add('is-locked');
 
-  // Failsafe — even if animation is interrupted, never block the page > 6s.
-  const HIDE_AFTER = 4500;
+  // Failsafe — never leave the page blocked if startup stalls.
   const FAILSAFE = 6500;
 
   function hide() {
@@ -20,8 +18,9 @@
     setTimeout(() => preloader.remove(), 800);
   }
 
-  window.addEventListener('load', () => {
-    setTimeout(hide, HIDE_AFTER);
+  window.addEventListener('DOMContentLoaded', () => {
+    const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300;
+    setTimeout(hide, delay);
   }, { once: true });
 
   setTimeout(hide, FAILSAFE);
